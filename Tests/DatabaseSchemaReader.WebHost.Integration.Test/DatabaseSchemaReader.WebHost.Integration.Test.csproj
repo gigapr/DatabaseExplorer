@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0003F3DD-368A-40EA-BF20-5B6B79F6B67D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DatabaseSchemaReader.WebHost.Integration.Test</RootNamespace>
+    <AssemblyName>DatabaseSchemaReader.WebHost.Integration.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\TablesControllerTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\DatabaseSchemaReader.ConnectionstringBuilder\DatabaseSchemaReader.ConnectionstringBuilder.csproj">
+      <Project>{0DA1865D-838D-463D-817C-E6D39DAA3675}</Project>
+      <Name>DatabaseSchemaReader.ConnectionstringBuilder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Src\DatabaseSchemaReader.Contract\DatabaseSchemaReader.Contract.csproj">
+      <Project>{B812845E-1B46-44FF-9C21-1C15FD88F4C3}</Project>
+      <Name>DatabaseSchemaReader.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\DatabaseSchemaReader.Service\DatabaseSchemaReader.Service.csproj">
+      <Project>{38C03DE4-E9E4-46E5-9DB3-F0836D49A2AD}</Project>
+      <Name>DatabaseSchemaReader.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Src\DatabaseSchemaReader.WebHost\DatabaseSchemaReader.WebHost.csproj">
+      <Project>{B622F841-B254-4195-B360-91EA8C85ACD1}</Project>
+      <Name>DatabaseSchemaReader.WebHost</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Src\DatabaseSchemaReader\DatabaseSchemaReader.csproj">
+      <Project>{8EC40820-AAF7-4102-8F2D-1BD6261D9133}</Project>
+      <Name>DatabaseSchemaReader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseSchemaReader.Integration.Tests.Utils\DatabaseSchemaReader.Integration.Tests.Utils.csproj">
+      <Project>{37D17718-9678-4359-A37A-094AE5917A6E}</Project>
+      <Name>DatabaseSchemaReader.Integration.Tests.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

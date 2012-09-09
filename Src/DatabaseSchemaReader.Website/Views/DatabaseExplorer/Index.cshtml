@@ -1,0 +1,37 @@
+﻿@model List<DatabaseSchemaReader.Contract.BusinessObjects.Table>
+@{
+    ViewBag.Title = "Database Explorer";
+    Layout = "../Shared/_Layout.cshtml";
+}
+@section css{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/DatabaseExplorer.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/SlidingPanel.css")" />
+}
+
+@section javascript{
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js'></script>
+    <script type='text/javascript' src="@Url.Content("~/Scripts/jquery.jsPlumb-1.3.10-all-min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jsPlumb.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/sliders.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/queryBuilder.js")"></script>
+    <script type="text/javascript" language="javascript">
+        var queryBuilder = new QueryBuilder();
+        var tablesManager = new TablesManager();              
+    </script>
+}
+<div class="header">
+    @Html.ActionLink("Back to Home", "Index", "Home", null, new { @class = "floatL" })
+    <div class="floatR">
+        Powered by &nbsp; <a href="http://gigawebsolution.com/" target="_blank">Giga Web Solution</a>
+    </div>
+</div>
+
+@Html.Partial("Connection")
+@Html.Partial("TablesList")
+
+<div id="tablesContainer">
+</div>
+
