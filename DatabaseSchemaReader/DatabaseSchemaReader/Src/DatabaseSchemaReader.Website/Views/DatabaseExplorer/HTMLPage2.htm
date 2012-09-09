@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+    <script src="../../Scripts/knockout-2.1.0.debug.js" type="text/javascript"></script>
+    <script src="../../Scripts/__queryBuilder.js" type="text/javascript"></script>
+</head>
+    <body>
+        <span data-bind="text: selectedPeople"></span> 
+        <br />
+        <br />
+        <br />
+        <ul data-bind="foreach: people">
+            <li>
+                <input type="checkbox" data-bind="attr: { value: name }, checked: $root.selectedPeople">
+                <span data-bind="text: name"></span> 
+            </li>
+        </ul>
+        <hr />
+        <div data-bind="text: ko.toJSON($root)">
+        </div>
+    </body>
+</html>

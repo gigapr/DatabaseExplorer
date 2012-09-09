@@ -1,0 +1,41 @@
+﻿<RecentFiles>
+  <RecentFiles>
+    <File id="37D17718-9678-4359-A37A-094AE5917A6E/d:Schema/f:Post.cs" caret="566" fromTop="13" />
+    <File id="37D17718-9678-4359-A37A-094AE5917A6E/f:BlogContext.cs" caret="423" fromTop="13" />
+    <File id="64964E11-14A9-4EE5-BB44-1C2075FF60F9/d:Scripts/f:sliders.js" caret="0" fromTop="0" />
+    <File id="64964E11-14A9-4EE5-BB44-1C2075FF60F9/d:Scripts/f:jsPlumb.js" caret="3910" fromTop="35" />
+    <File id="8EC40820-AAF7-4102-8F2D-1BD6261D9133/d:Mappers/d:Interfaces/f:IForeignKeyMapper.cs" caret="357" fromTop="10" />
+    <File id="B622F841-B254-4195-B360-91EA8C85ACD1/d:Controllers/f:DatabaseSchemaExplorerController.cs" caret="0" fromTop="0" />
+    <File id="B622F841-B254-4195-B360-91EA8C85ACD1/d:Attributes/f:SchemaExplorerExceptionHandlerAttribute.cs" caret="0" fromTop="0" />
+    <File id="728423BF-47D4-4B55-ADD1-8810C89E6130/d:Attributes/f:SchemaExplorerExceptionHandlerAttributeTest.cs" caret="0" fromTop="0" />
+    <File id="B6302291-CD7B-424D-9AFC-F47C6B700C26/d:Factories/f:ConnectionstringBuilderFactoryTest.cs" caret="0" fromTop="0" />
+    <File id="D3AB8C7D-2FD7-413B-A98C-EAAEF0269E96/d:Controllers/f:DatabaseExplorerControllerTest.cs" caret="4963" fromTop="23" />
+    <File id="8EC40820-AAF7-4102-8F2D-1BD6261D9133/f:SchemaReader.cs" caret="3307" fromTop="27" />
+    <File id="64964E11-14A9-4EE5-BB44-1C2075FF60F9/d:Controllers/f:DatabaseExplorerController.cs" caret="1772" fromTop="21" />
+    <File id="8EC40820-AAF7-4102-8F2D-1BD6261D9133/d:Mappers/f:ForeignKeyMapper.cs" caret="2464" fromTop="49" />
+    <File id="37D17718-9678-4359-A37A-094AE5917A6E/f:DatabaseHelper.cs" caret="247" fromTop="8" />
+    <File id="B07AA5CA-FDC5-4414-848E-2D58597365A3/f:SchemaReaderTests.cs" caret="14076" fromTop="223" />
+    <File id="64964E11-14A9-4EE5-BB44-1C2075FF60F9/d:Views/d:Shared/f:Register.cshtml" caret="0" fromTop="0" />
+    <File id="64964E11-14A9-4EE5-BB44-1C2075FF60F9/d:Views/d:Shared/f:SignIn.cshtml" caret="92" fromTop="2" />
+    <File id="64964E11-14A9-4EE5-BB44-1C2075FF60F9/d:Views/d:Shared/f:WebApi.cshtml" caret="39" fromTop="0" />
+    <File id="64964E11-14A9-4EE5-BB44-1C2075FF60F9/d:Views/d:Shared/f:DatabaseExplorer.cshtml" caret="269" fromTop="6" />
+    <File id="64964E11-14A9-4EE5-BB44-1C2075FF60F9/d:Views/d:Shared/f:Home.cshtml" caret="0" fromTop="0" />
+    <File id="64964E11-14A9-4EE5-BB44-1C2075FF60F9/d:Views/d:Home/f:Index.cshtml" caret="868" fromTop="17" />
+    <File id="64964E11-14A9-4EE5-BB44-1C2075FF60F9/d:Views/d:Shared/f:Table.cshtml" caret="463" fromTop="12" />
+    <File id="64964E11-14A9-4EE5-BB44-1C2075FF60F9/d:Views/d:Shared/f:_Layout.cshtml" caret="429" fromTop="14" />
+    <File id="64964E11-14A9-4EE5-BB44-1C2075FF60F9/d:Scripts/f:website.js" caret="0" fromTop="0" />
+    <File id="0003F3DD-368A-40EA-BF20-5B6B79F6B67D/d:Controllers/f:TablesControllerTest.cs" caret="14669" fromTop="11" />
+  </RecentFiles>
+  <RecentEdits>
+    <File id="64964E11-14A9-4EE5-BB44-1C2075FF60F9/d:Views/d:Shared/f:Home.cshtml" caret="1595" fromTop="29" />
+    <File id="64964E11-14A9-4EE5-BB44-1C2075FF60F9/d:Views/d:Shared/f:Home.cshtml" caret="1433" fromTop="25" />
+    <File id="64964E11-14A9-4EE5-BB44-1C2075FF60F9/d:Views/d:Shared/f:Home.cshtml" caret="741" fromTop="10" />
+    <File id="B07AA5CA-FDC5-4414-848E-2D58597365A3/f:SchemaReaderTests.cs" caret="2073" fromTop="3" />
+    <File id="B07AA5CA-FDC5-4414-848E-2D58597365A3/f:SchemaReaderTests.cs" caret="3191" fromTop="28" />
+    <File id="B07AA5CA-FDC5-4414-848E-2D58597365A3/f:SchemaReaderTests.cs" caret="3571" fromTop="30" />
+    <File id="B07AA5CA-FDC5-4414-848E-2D58597365A3/f:SchemaReaderTests.cs" caret="14076" fromTop="22" />
+    <File id="0003F3DD-368A-40EA-BF20-5B6B79F6B67D/d:Controllers/f:TablesControllerTest.cs" caret="15203" fromTop="22" />
+    <File id="0003F3DD-368A-40EA-BF20-5B6B79F6B67D/d:Controllers/f:TablesControllerTest.cs" caret="16306" fromTop="28" />
+    <File id="0003F3DD-368A-40EA-BF20-5B6B79F6B67D/d:Controllers/f:TablesControllerTest.cs" caret="14669" fromTop="11" />
+  </RecentEdits>
+</RecentFiles>

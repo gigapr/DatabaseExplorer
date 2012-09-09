@@ -1,0 +1,42 @@
+﻿@model DatabaseSchemaReader.Website.Models.SignIn
+
+<div class="section black" id="section4">
+    <ul class="nav">
+        <li><a href="#section1">Home</a></li>
+        <li><a href="#section2">Explorer</a></li>
+        <li><a href="#section3">Web Api</a></li>
+        <li>Sign In</li>
+        <li><a href="#section5">Register</a></li>
+    </ul>
+    <h2>Sign In</h2>
+    <p class="description">
+        Sign in to Database Explorer or &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#section6" id="signInTrigger" class="blue trigger">register</a> 
+    </p>
+
+    <div id="signIn">
+        @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "Post", OnComplete = "OnCompleteSignIn", Url = Url.Action("SignIn", "Account") }))
+        {    
+            <fieldset>
+            @Html.ValidationSummary(true)
+            <div>
+                <span class="connectionFormLabel">Email</span>
+                @Html.EditorFor(model => model.Email)
+                <br/>
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+            <br/>            
+            <div>
+                <span class="connectionFormLabel">Password</span>
+                @Html.EditorFor(model => model.Password)
+                <br/>
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+                            
+            <div>
+                <input type="submit" class="floatR" value="Sign In" />
+            </div>
+        </fieldset>
+        }
+    </div>
+           
+</div>

@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Database Explorer";
+    Layout        = "../Shared/_Layout.cshtml";
+}
+@section javascript{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.easing.1.3.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/website.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/flowplayer-3.2.6.min.js")" ></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
+}
+
+@section css{
+    <link href="@Url.Content("~/Content/Website.css")" rel="stylesheet" type="text/css" />
+}
+
+@Html.Partial("Home")
+@Html.Partial("DatabaseExplorer")
+@Html.Partial("WebApi")
+@Html.Partial("SignIn")
+@Html.Partial("Register")
+
+@Html.ActionLink("Test", "Index", "DatabaseExplorer")

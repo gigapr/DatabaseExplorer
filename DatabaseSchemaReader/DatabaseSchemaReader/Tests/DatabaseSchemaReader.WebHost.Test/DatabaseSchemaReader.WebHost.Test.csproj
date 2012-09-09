@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{728423BF-47D4-4B55-ADD1-8810C89E6130}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DatabaseSchemaReader.WebHost.Test</RootNamespace>
+    <AssemblyName>DatabaseSchemaReader.WebHost.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfigTest.cs" />
+    <Compile Include="Attributes\SchemaExplorerExceptionHandlerAttributeTest.cs" />
+    <Compile Include="Controllers\DatabaseSchemaExplorerController.cs" />
+    <Compile Include="Mappers\ConnectionstringArgumentsMapperTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\DatabaseSchemaReader.ConnectionstringBuilder\DatabaseSchemaReader.ConnectionstringBuilder.csproj">
+      <Project>{0DA1865D-838D-463D-817C-E6D39DAA3675}</Project>
+      <Name>DatabaseSchemaReader.ConnectionstringBuilder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Src\DatabaseSchemaReader.Contract\DatabaseSchemaReader.Contract.csproj">
+      <Project>{B812845E-1B46-44FF-9C21-1C15FD88F4C3}</Project>
+      <Name>DatabaseSchemaReader.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\DatabaseSchemaReader.Service\DatabaseSchemaReader.Service.csproj">
+      <Project>{38C03DE4-E9E4-46E5-9DB3-F0836D49A2AD}</Project>
+      <Name>DatabaseSchemaReader.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Src\DatabaseSchemaReader.WebHost\DatabaseSchemaReader.WebHost.csproj">
+      <Project>{B622F841-B254-4195-B360-91EA8C85ACD1}</Project>
+      <Name>DatabaseSchemaReader.WebHost</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Src\DatabaseSchemaReader\DatabaseSchemaReader.csproj">
+      <Project>{8EC40820-AAF7-4102-8F2D-1BD6261D9133}</Project>
+      <Name>DatabaseSchemaReader</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
