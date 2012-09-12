@@ -1,17 +1,57 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
+using DatabaseSchemaReader.Website.Models;
+using Raven.Client;
 
 namespace DatabaseSchemaReader.Website.Controllers
 {
     public class AccountController : Controller
     {
-        public ActionResult SignIn()
+        private readonly IDocumentStore _documentStore;
+
+        public AccountController(IDocumentStore documentStore)
         {
-            throw new System.NotImplementedException();
+            _documentStore = documentStore;
         }
 
-        public ActionResult Register()
+        [HttpPost]
+        public JsonResult SignIn(SignIn sign)
         {
-            throw new System.NotImplementedException();
+            using (var session = _documentStore.OpenSession())
+            {
+                session.Store(sign);
+
+                session.SaveChanges();
+            }
+
+            return Json(new { Message = "Success" }, JsonRequestBehavior.AllowGet);
+
         }
+
+        [HttpPost]
+        public ActionResult Register(SignIn sign)
+        {
+            //var user = new User
+            //{
+            //    Password = "Password",
+            //    Username = "Username"
+            //}; 
+            using (var session = _documentStore.OpenSession())
+            {
+                session.Store(sign);
+
+                session.SaveChanges();
+            }    
+
+            return View();
+        }
+    }
+
+    public class User
+    {
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
     }
 }

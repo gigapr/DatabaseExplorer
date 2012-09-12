@@ -1,4 +1,5 @@
-﻿using System.Web.Script.Serialization;
+﻿using System;
+using System.Web.Script.Serialization;
 using DatabaseSchemaReader.ConnectionstringBuilder.Factories;
 using DatabaseSchemaReader.ConnectionstringBuilder.Factories.Interfaces;
 using DatabaseSchemaReader.ConnectionstringBuilder.Interfaces;
@@ -13,6 +14,8 @@ using GigaWebSolution.DatabaseSchemaReader.Interfaces;
 using GigaWebSolution.DatabaseSchemaReader.Mappers;
 using GigaWebSolution.DatabaseSchemaReader.Mappers.Interfaces;
 using Microsoft.Practices.Unity;
+using Raven.Client;
+using Raven.Client.Embedded;
 
 namespace DatabaseSchemaReader.WebHost
 {
@@ -60,5 +63,5 @@ namespace DatabaseSchemaReader.WebHost
 
             return _container.Resolve<T>(name);
         }
-    }
+    }    
 }

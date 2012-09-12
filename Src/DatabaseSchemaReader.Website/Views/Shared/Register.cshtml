@@ -1,4 +1,4 @@
-﻿@model DatabaseSchemaReader.Website.Models.SignIn
+﻿@model DatabaseSchemaReader.Website.Models.Register
 <div class="section black" id="section5">
     <ul class="nav">
         <li><a href="#section1">Home</a></li>
@@ -12,7 +12,7 @@
         Already registred? <a href="#section5" id="registerTrigger" class="blue">Sign In</a>
     </p>
     <div id="register">
-        @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "Post", OnComplete = "OnCompleteSignIn", Url = Url.Action("Register", "Account") }))
+        @using (Ajax.BeginForm("Register", "Account", new AjaxOptions { HttpMethod = "Post", OnComplete = "OnCompleteSignIn", Url = Url.Action("Register", "Account") }))
         {    
             <fieldset>
                 @Html.ValidationSummary(true)

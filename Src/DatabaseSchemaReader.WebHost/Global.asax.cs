@@ -20,7 +20,7 @@ namespace DatabaseSchemaReader.WebHost
             RegisterRoutes(RouteTable.Routes);
             
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            
             RegisterDocumentationProvider();
         }
 

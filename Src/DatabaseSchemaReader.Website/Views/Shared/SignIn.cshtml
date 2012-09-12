@@ -1,5 +1,12 @@
 ﻿@model DatabaseSchemaReader.Website.Models.SignIn
 
+<script type="text/javascript" language="javascript">
+    function Test(message) {
+        var jsonData = message.get_response().get_object();
+        alert(jsonData);
+    }
+</script>
+
 <div class="section black" id="section4">
     <ul class="nav">
         <li><a href="#section1">Home</a></li>
@@ -14,7 +21,7 @@
     </p>
 
     <div id="signIn">
-        @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "Post", OnComplete = "OnCompleteSignIn", Url = Url.Action("SignIn", "Account") }))
+        @using (Ajax.BeginForm("SignIn", "Account",new AjaxOptions { HttpMethod = "Post", OnComplete = "Test()" }))
         {    
             <fieldset>
             @Html.ValidationSummary(true)

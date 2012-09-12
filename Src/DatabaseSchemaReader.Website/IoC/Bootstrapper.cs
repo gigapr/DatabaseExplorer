@@ -1,16 +1,10 @@
+using System.Configuration;
 using System.Web.Mvc;
-using DatabaseSchemaReader.ConnectionstringBuilder.Factories;
-using DatabaseSchemaReader.ConnectionstringBuilder.Factories.Interfaces;
-using DatabaseSchemaReader.ConnectionstringBuilder.Interfaces;
-using DatabaseSchemaReader.ConnectionstringBuilder.Validators;
-using DatabaseSchemaReader.ConnectionstringBuilder.Validators.Interfaces;
-using DatabaseSchemaReader.Website.Mappers;
-using DatabaseSchemaReader.Website.Mappers.Interfaces;
-using GigaWebSolution.DatabaseSchemaReader;
-using GigaWebSolution.DatabaseSchemaReader.Interfaces;
-using GigaWebSolution.DatabaseSchemaReader.Mappers;
-using GigaWebSolution.DatabaseSchemaReader.Mappers.Interfaces;
+using DatabaseSchemaReader.Website.Configurations.Interfaces;
 using Microsoft.Practices.Unity;
+using Raven.Client;
+using Raven.Client.Document;
+using Raven.Client.Embedded;
 using Unity.Mvc3;
 
 namespace DatabaseSchemaReader.Website.IoC
@@ -28,18 +22,40 @@ namespace DatabaseSchemaReader.Website.IoC
         {
             var container = new UnityContainer();
 
-            container.RegisterType<IConnectionstringArgumentsMapper, ConnectionstringArgumentsMapper>();
-            container.RegisterType<IForeignKeyMapper, ForeignKeyMapper>();
-            container.RegisterType<IColumnMapper, ColumnMapper>();
-            container.RegisterType<IIndexMapper, IndexMapper>();
+            var websiteConfigurations = (IWebsiteConfigurations)ConfigurationManager.GetSection("websiteConfiguration");
+            container.RegisterInstance(typeof(IWebsiteConfigurations), websiteConfigurations);
 
-            container.RegisterType<ISchemaReader, SchemaReader>();
+            var store = InitalizeRavenDbDocumentStore(websiteConfigurations);
 
-            container.RegisterType<IConnectionstringBuilder, ConnectionstringBuilder.ConnectionstringBuilder>();
-            container.RegisterType<IConnectionstringBuilderFactory, ConnectionstringBuilderFactory>();
-            container.RegisterType<IConnectionstringArgumentsValidator, ConnectionstringArgumentsValidator>();
+            container.RegisterInstance(store);
 
             return container;          
+        }
+
+        private static IDocumentStore InitalizeRavenDbDocumentStore(IWebsiteConfigurations websiteConfigurations)
+        {
+            IDocumentStore store;
+
+            if (websiteConfigurations.IsTestingEnviroment)
+            {
+                store = new EmbeddableDocumentStore
+                {
+                    DataDirectory = "Data",
+                    RunInMemory = true,
+                    UseEmbeddedHttpServer = true
+                };
+            }
+            else
+            {
+                store = new DocumentStore
+                {
+                    ConnectionStringName = websiteConfigurations.ConnectionstringName
+                };
+            }
+
+            store.Initialize();
+
+            return store;
         }
     }
 }

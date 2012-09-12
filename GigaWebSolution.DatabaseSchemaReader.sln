@@ -19,13 +19,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.Integr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.Contract", "Src\DatabaseSchemaReader.Contract\DatabaseSchemaReader.Contract.csproj", "{B812845E-1B46-44FF-9C21-1C15FD88F4C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.ConnectionstringBuilder", "src\DatabaseSchemaReader.ConnectionstringBuilder\DatabaseSchemaReader.ConnectionstringBuilder.csproj", "{0DA1865D-838D-463D-817C-E6D39DAA3675}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.ConnectionstringBuilder", "Src\DatabaseSchemaReader.ConnectionstringBuilder\DatabaseSchemaReader.ConnectionstringBuilder.csproj", "{0DA1865D-838D-463D-817C-E6D39DAA3675}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.ConnectionstringBuilderTest", "tests\DatabaseSchemaReader.ConnectionstringBuilderTest\DatabaseSchemaReader.ConnectionstringBuilderTest.csproj", "{B6302291-CD7B-424D-9AFC-F47C6B700C26}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.ConnectionstringBuilderTest", "Tests\DatabaseSchemaReader.ConnectionstringBuilderTest\DatabaseSchemaReader.ConnectionstringBuilderTest.csproj", "{B6302291-CD7B-424D-9AFC-F47C6B700C26}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.WebHost.Test", "Tests\DatabaseSchemaReader.WebHost.Test\DatabaseSchemaReader.WebHost.Test.csproj", "{728423BF-47D4-4B55-ADD1-8810C89E6130}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.Service", "src\DatabaseSchemaReader.Service\DatabaseSchemaReader.Service.csproj", "{38C03DE4-E9E4-46E5-9DB3-F0836D49A2AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.Service", "Src\DatabaseSchemaReader.Service\DatabaseSchemaReader.Service.csproj", "{38C03DE4-E9E4-46E5-9DB3-F0836D49A2AD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.WebHost.Integration.Test", "Tests\DatabaseSchemaReader.WebHost.Integration.Test\DatabaseSchemaReader.WebHost.Integration.Test.csproj", "{0003F3DD-368A-40EA-BF20-5B6B79F6B67D}"
 EndProject
@@ -34,6 +34,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.Website.Test", "Tests\DatabaseSchemaReader.Website.Test\DatabaseSchemaReader.Website.Test.csproj", "{D3AB8C7D-2FD7-413B-A98C-EAAEF0269E96}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.Website", "Src\DatabaseSchemaReader.Website\DatabaseSchemaReader.Website.csproj", "{64964E11-14A9-4EE5-BB44-1C2075FF60F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.Website.Integration.Test", "Tests\DatabaseSchemaReader.Website.Integration.Test\DatabaseSchemaReader.Website.Integration.Test.csproj", "{3FAB9AD9-370F-4AA0-8E14-BF2DA77ED25D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +91,10 @@ Global
 		{64964E11-14A9-4EE5-BB44-1C2075FF60F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64964E11-14A9-4EE5-BB44-1C2075FF60F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64964E11-14A9-4EE5-BB44-1C2075FF60F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FAB9AD9-370F-4AA0-8E14-BF2DA77ED25D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FAB9AD9-370F-4AA0-8E14-BF2DA77ED25D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FAB9AD9-370F-4AA0-8E14-BF2DA77ED25D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FAB9AD9-370F-4AA0-8E14-BF2DA77ED25D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +106,7 @@ Global
 		{728423BF-47D4-4B55-ADD1-8810C89E6130} = {B554A9A7-1BAC-47BB-8856-E9D70324D2C9}
 		{0003F3DD-368A-40EA-BF20-5B6B79F6B67D} = {B554A9A7-1BAC-47BB-8856-E9D70324D2C9}
 		{D3AB8C7D-2FD7-413B-A98C-EAAEF0269E96} = {B554A9A7-1BAC-47BB-8856-E9D70324D2C9}
+		{3FAB9AD9-370F-4AA0-8E14-BF2DA77ED25D} = {B554A9A7-1BAC-47BB-8856-E9D70324D2C9}
 		{8EC40820-AAF7-4102-8F2D-1BD6261D9133} = {D7FC4265-C1AF-4481-AB74-9CC42510DDFD}
 		{B812845E-1B46-44FF-9C21-1C15FD88F4C3} = {D7FC4265-C1AF-4481-AB74-9CC42510DDFD}
 		{0DA1865D-838D-463D-817C-E6D39DAA3675} = {D7FC4265-C1AF-4481-AB74-9CC42510DDFD}
