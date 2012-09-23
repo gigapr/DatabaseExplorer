@@ -1,16 +1,15 @@
 ﻿using System.Data.OleDb;
 using System.Linq;
 using DatabaseSchemaReader.Contract.BusinessObjects;
-using DatabaseSchemaReader.Integration.Tests.Utils;
-using GigaWebSolution.DatabaseSchemaReader;
+using DatabaseSchemaReader.Integration.Tests.Utils.DatabaseHelper;
 using GigaWebSolution.DatabaseSchemaReader.Interfaces;
 using GigaWebSolution.DatabaseSchemaReader.Mappers;
 using NUnit.Framework;
 
-namespace DatabaseSchemaReader.Integration.Tests
+namespace DatabaseSchemaReader.Integration.Tests.SchemaReader
 {
     [TestFixture, Category("Integration")]
-    public class SchemaReaderTests
+    public class SqlServerSchemaReaderTests
     {
         private ISchemaReader _databaseSchemaReader;
         private const string ConnectionString = "Provider=SQLOLEDB;Data Source=localhost;Initial Catalog=Blog;Integrated Security=SSPI;OLE DB Services=-4;"; 
@@ -18,7 +17,7 @@ namespace DatabaseSchemaReader.Integration.Tests
         [SetUp]
         public void SetUp()
         {
-            DatabaseHelper.InitializeDatabase();
+            SqlServerDatabaseHelper.InitializeDatabase();
 
             InitializeDatabaseSchemaReader();
         }
@@ -38,7 +37,7 @@ namespace DatabaseSchemaReader.Integration.Tests
         [Test]
         public void Should_be_able_to_get_a_list_of_views_names()
         {
-            DatabaseHelper.CreateView();
+            SqlServerDatabaseHelper.CreateView();
 
             var views = _databaseSchemaReader.GetViewsName(ConnectionString);
 
@@ -46,13 +45,13 @@ namespace DatabaseSchemaReader.Integration.Tests
             Assert.AreEqual(1, views.Count);
             Assert.AreEqual("Posts_Blog", views.First());
 
-            DatabaseHelper.DropView();
+            SqlServerDatabaseHelper.DropView();
         }
 
         [Test]
         public void Should_be_able_to_get_a_list_of_foreignkeys()
         {
-            DatabaseHelper.CreateView();
+            SqlServerDatabaseHelper.CreateView();
 
             var foreignKeys = _databaseSchemaReader.GetForeignKeys(ConnectionString);
 
@@ -83,7 +82,7 @@ namespace DatabaseSchemaReader.Integration.Tests
             Assert.AreEqual("Blogs", third.PrimaryKeyTableName);
             Assert.AreEqual("Id", third.PrimaryKeysColumns.First().Name);
 
-            DatabaseHelper.DropView();
+            SqlServerDatabaseHelper.DropView();
         }
 
         [Test]
@@ -305,7 +304,7 @@ namespace DatabaseSchemaReader.Integration.Tests
         [TearDown]
         public void TearDown()
         {
-           // DatabaseHelper.DropDatabase();
+           // SqlServerDatabaseHelper.DropDatabase();
         }
 
         private void InitializeDatabaseSchemaReader()
@@ -314,7 +313,7 @@ namespace DatabaseSchemaReader.Integration.Tests
             var columnMapper = new ColumnMapper();
             var indexMapper = new IndexMapper();
 
-            _databaseSchemaReader = new SchemaReader(foreignKeyMapper, columnMapper, indexMapper);
+            _databaseSchemaReader = new GigaWebSolution.DatabaseSchemaReader.SchemaReader(foreignKeyMapper, columnMapper, indexMapper);
         }
     }
 }

@@ -1,6 +1,17 @@
 using System.Configuration;
 using System.Web.Mvc;
+using DatabaseSchemaReader.ConnectionstringBuilder.Factories;
+using DatabaseSchemaReader.ConnectionstringBuilder.Factories.Interfaces;
+using DatabaseSchemaReader.ConnectionstringBuilder.Interfaces;
+using DatabaseSchemaReader.ConnectionstringBuilder.Validators;
+using DatabaseSchemaReader.ConnectionstringBuilder.Validators.Interfaces;
 using DatabaseSchemaReader.Website.Configurations.Interfaces;
+using DatabaseSchemaReader.Website.Mappers;
+using DatabaseSchemaReader.Website.Mappers.Interfaces;
+using GigaWebSolution.DatabaseSchemaReader;
+using GigaWebSolution.DatabaseSchemaReader.Interfaces;
+using GigaWebSolution.DatabaseSchemaReader.Mappers;
+using GigaWebSolution.DatabaseSchemaReader.Mappers.Interfaces;
 using Microsoft.Practices.Unity;
 using Raven.Client;
 using Raven.Client.Document;
@@ -24,6 +35,15 @@ namespace DatabaseSchemaReader.Website.IoC
 
             var websiteConfigurations = (IWebsiteConfigurations)ConfigurationManager.GetSection("websiteConfiguration");
             container.RegisterInstance(typeof(IWebsiteConfigurations), websiteConfigurations);
+            container.RegisterType<IConnectionstringArgumentsMapper, ConnectionstringArgumentsMapper>();
+            container.RegisterType<ISchemaReader, SchemaReader>();
+
+            container.RegisterType<IConnectionstringBuilder, ConnectionstringBuilder.ConnectionstringBuilder>();
+            container.RegisterType<IConnectionstringBuilderFactory, ConnectionstringBuilderFactory>();
+
+            container.RegisterType<IForeignKeyMapper, ForeignKeyMapper>();
+            container.RegisterType<IColumnMapper, ColumnMapper>();
+            container.RegisterType<IIndexMapper, IndexMapper>();
 
             var store = InitalizeRavenDbDocumentStore(websiteConfigurations);
 

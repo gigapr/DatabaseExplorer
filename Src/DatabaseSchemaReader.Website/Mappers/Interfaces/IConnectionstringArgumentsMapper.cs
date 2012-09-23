@@ -1,10 +1,10 @@
 ﻿using DatabaseSchemaReader.Contract.BusinessObjects;
-using DatabaseSchemaReader.Website.Models;
+using DatabaseSchemaReader.Website.Model;
 
 namespace DatabaseSchemaReader.Website.Mappers.Interfaces
 {
     public interface IConnectionstringArgumentsMapper
     {
-        ConnectionstringArguments Map(DatabaseConnection databaseConnection);
+        SqlServerConnectionstringArguments Map(DatabaseConnection databaseConnection);
     }
 }

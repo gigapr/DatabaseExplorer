@@ -3,7 +3,7 @@ using System.Linq;
 using DatabaseSchemaReader.ConnectionstringBuilder.Factories;
 using DatabaseSchemaReader.ConnectionstringBuilder.Validators;
 using DatabaseSchemaReader.Contract.BusinessObjects;
-using DatabaseSchemaReader.Integration.Tests.Utils;
+using DatabaseSchemaReader.Integration.Tests.Utils.DatabaseHelper;
 using DatabaseSchemaReader.Service;
 using DatabaseSchemaReader.WebHost.Controllers;
 using DatabaseSchemaReader.WebHost.Mappers;
@@ -28,11 +28,11 @@ namespace DatabaseSchemaReader.WebHost.Integration.Test.Controllers
         [TestFixtureSetUp]
         public void SetUp()
         {
-            DatabaseHelper.InitializeDatabase();
-            DatabaseHelper.CreateUser(Username, Password);
+            SqlServerDatabaseHelper.InitializeDatabase();
+            SqlServerDatabaseHelper.CreateUser(Username, Password);
 
-            var connectionstringArgumentsValidator = new ConnectionstringArgumentsValidator();
-            var connectionstringBuilderFactory = new ConnectionstringBuilderFactory(connectionstringArgumentsValidator);
+            var connectionstringArgumentsValidator = new SqlServerConnectionstringArgumentsValidator();
+            var connectionstringBuilderFactory = new ConnectionstringBuilderFactory();
             var connectionstringBuilder = new ConnectionstringBuilder.ConnectionstringBuilder(connectionstringBuilderFactory);
 
             var indexMapper = new IndexMapper();
@@ -73,7 +73,7 @@ namespace DatabaseSchemaReader.WebHost.Integration.Test.Controllers
         [Test]
         public void Should_be_able_to_get_a_list_of_view_names()
         {
-            DatabaseHelper.CreateView();
+            SqlServerDatabaseHelper.CreateView();
 
             var views = _databaseSchemaExplorerController.ViewsName(DatabaseType, Provider, DataSource, DatabaseName, Username, Password);
 
@@ -81,17 +81,17 @@ namespace DatabaseSchemaReader.WebHost.Integration.Test.Controllers
             Assert.AreEqual(1, views.Count());
             Assert.AreEqual("Posts_Blog", views.First());
 
-            DatabaseHelper.DropView();
+            SqlServerDatabaseHelper.DropView();
         }
 
         [Test, ExpectedException(typeof(OleDbException))]
         public void Should_throw_an_exception_when_credential_are_incorrect()
         {
-            DatabaseHelper.CreateView();
+            SqlServerDatabaseHelper.CreateView();
 
             _databaseSchemaExplorerController.ViewsName(DatabaseType, Provider, DataSource, DatabaseName, "invalidusername", "invalidPasswod");
 
-            DatabaseHelper.DropView();
+            SqlServerDatabaseHelper.DropView();
         }
 
         [Test]
@@ -341,13 +341,13 @@ namespace DatabaseSchemaReader.WebHost.Integration.Test.Controllers
             Assert.AreEqual("Blogs", third.PrimaryKeyTableName);
             Assert.AreEqual("Id", third.PrimaryKeysColumns.First().Name);
 
-            DatabaseHelper.DropView();
+            SqlServerDatabaseHelper.DropView();
         }
 
         [TestFixtureTearDown]
         public void TearDown()
         {
-           DatabaseHelper.DropDatabase();
+           SqlServerDatabaseHelper.DropDatabase();
         }
     }
 }

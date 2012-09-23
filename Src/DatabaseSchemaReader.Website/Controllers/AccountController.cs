@@ -1,6 +1,7 @@
-﻿using System;
-using System.Web.Mvc;
-using DatabaseSchemaReader.Website.Models;
+﻿using System.Web.Mvc;
+using DatabaseSchemaReader.Website.Mappers.Interfaces;
+using DatabaseSchemaReader.Website.Model;
+using DatabaseSchemaReader.Website.ViewModels;
 using Raven.Client;
 
 namespace DatabaseSchemaReader.Website.Controllers
@@ -8,50 +9,42 @@ namespace DatabaseSchemaReader.Website.Controllers
     public class AccountController : Controller
     {
         private readonly IDocumentStore _documentStore;
+        private readonly IUserMapper _userMapper;
 
-        public AccountController(IDocumentStore documentStore)
+        public AccountController(IDocumentStore documentStore, IUserMapper userMapper)
         {
             _documentStore = documentStore;
+            _userMapper = userMapper;
         }
 
         [HttpPost]
-        public JsonResult SignIn(SignIn sign)
+        public ActionResult SignIn(SignIn signIn)
         {
+            var user = _userMapper.Map(signIn);
+
             using (var session = _documentStore.OpenSession())
             {
-                session.Store(sign);
+                session.Load<User>(user.Email, user.Password);
 
                 session.SaveChanges();
             }
 
-            return Json(new { Message = "Success" }, JsonRequestBehavior.AllowGet);
-
+            return View();
         }
 
         [HttpPost]
-        public ActionResult Register(SignIn sign)
+        public ActionResult Register(Register register)
         {
-            //var user = new User
-            //{
-            //    Password = "Password",
-            //    Username = "Username"
-            //}; 
+            var user = _userMapper.Map(register);
+
             using (var session = _documentStore.OpenSession())
             {
-                session.Store(sign);
+                session.Store(user);
 
                 session.SaveChanges();
             }    
 
             return View();
         }
-    }
-
-    public class User
-    {
-        public int Id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string ConfirmPassword { get; set; }
     }
 }

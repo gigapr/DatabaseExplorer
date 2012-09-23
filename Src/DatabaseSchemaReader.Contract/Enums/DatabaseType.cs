@@ -3,7 +3,7 @@
     public enum DatabaseType
     {
         SqlServer,
-        //Oracle,
-        //Access
+        Oracle,
+        Access
     }
 }

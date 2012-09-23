@@ -1,4 +1,4 @@
-﻿@model DatabaseSchemaReader.Website.Models.DatabaseConnection
+﻿@model DatabaseSchemaReader.Website.Model.DatabaseConnection
            
 <a id="connectionPanelTrigger" class="trigger" href="#">Connection</a>
 <div id="connectionPanel" class="panel">
@@ -7,6 +7,12 @@
         {    
             <fieldset>
                 @Html.ValidationSummary(true)
+                <div>
+                    <span class="connectionFormLabel">Database Type</span>
+                    @Html.DropDownListFor(x => x.DatabaseType, Model.DatabaseType, "- Select -")
+                    @Html.ValidationMessageFor(model => model.DatabaseType)
+                </div>
+
                 <div>
                     <span class="connectionFormLabel">Data Source</span>
                     @Html.EditorFor(model => model.DataSource)

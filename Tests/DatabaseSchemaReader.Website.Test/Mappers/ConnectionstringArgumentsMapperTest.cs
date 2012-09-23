@@ -1,6 +1,6 @@
-﻿using DatabaseSchemaReader.Website.Mappers;
+﻿using DatabaseSchemaReader.Website.Model;
+using DatabaseSchemaReader.Website.Mappers;
 using DatabaseSchemaReader.Website.Mappers.Interfaces;
-using DatabaseSchemaReader.Website.Models;
 using NUnit.Framework;
 
 namespace DatabaseSchemaReader.Website.Test.Mappers

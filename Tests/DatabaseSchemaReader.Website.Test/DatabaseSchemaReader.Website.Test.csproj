@@ -36,6 +36,7 @@
     <Reference Include="nunit.framework">
       <HintPath>..\DatabaseSchemaReader.Integration.Tests\bin\Debug\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Raven.Client.Lightweight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL" />
     <Reference Include="Rhino.Mocks">
       <HintPath>..\..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
     </Reference>
@@ -51,9 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AccountControllerTest.cs" />
     <Compile Include="Controllers\DatabaseExplorerControllerTest.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Mappers\ConnectionstringArgumentsMapperTest.cs" />
+    <Compile Include="Mappers\UserMapperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -36,17 +36,21 @@
     <Reference Include="nunit.framework">
       <HintPath>..\..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\TypeCheckerTest.cs" />
     <Compile Include="Factories\ConnectionstringBuilderFactoryTest.cs" />
     <Compile Include="Factories\ConnectionstringFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strategies\AccessConnectionstringBuilderStrategyTest.cs" />
     <Compile Include="Strategies\OracleConnectionstringBuilderStrategyTest.cs" />
     <Compile Include="Strategies\SqlServerConnectionstringBuilderStrategyTests.cs" />
-    <Compile Include="Validators\ConnectionstringArgumentsValidatorTests.cs" />
+    <Compile Include="Validators\SqlServerConnectionstringArgumentsValidatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

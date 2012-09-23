@@ -1,4 +1,4 @@
-﻿@model List<DatabaseSchemaReader.Contract.BusinessObjects.Table>
+﻿@model DatabaseSchemaReader.Website.ViewModels.DatabaseExplorer
 @{
     ViewBag.Title = "Database Explorer";
     Layout = "../Shared/_Layout.cshtml";
@@ -29,8 +29,8 @@
     </div>
 </div>
 
-@Html.Partial("Connection")
-@Html.Partial("TablesList")
+@Html.Partial("Connection", Model.DatabaseConnection)
+@Html.Partial("TablesList", Model.Tables != null && Model.Tables.Count > 0 ? Model.Tables.Select(table => table.Name).ToList() : new List<string>())
 
 <div id="tablesContainer">
 </div>

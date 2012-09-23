@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using DatabaseSchemaReader.ConnectionstringBuilder.Interfaces;
+using DatabaseSchemaReader.Website.Model;
 using DatabaseSchemaReader.Website.Mappers.Interfaces;
-using DatabaseSchemaReader.Website.Models;
+using DatabaseSchemaReader.Website.ViewModels;
 using GigaWebSolution.DatabaseSchemaReader.Interfaces;
 
 namespace DatabaseSchemaReader.Website.Controllers
 {
     public class DatabaseExplorerController : Controller
     {
-        //private const string Connectionstring = "Provider=SQLOLEDB;Data Source=localhost;Initial Catalog=Blog;Integrated Security=SSPI;OLE DB Services=-4;";
-
         public string Connectionstring
         {
             get { return Session["Connectionstring"].ToString(); }
@@ -31,7 +31,20 @@ namespace DatabaseSchemaReader.Website.Controllers
 
         public ActionResult Index()
         {
-            return View("Index");
+            var databaseConnection = new DatabaseConnection { DatabaseType = new SelectList(GetDatabaseTypes(), "key", "value") };
+
+            var databaseExplorer = new DatabaseExplorer {DatabaseConnection = databaseConnection};  
+
+            return View("Index", databaseExplorer);
+        }
+
+        private IEnumerable GetDatabaseTypes()
+        {
+            return new Dictionary<string, string>
+            {
+                { "Access", "Access"},
+                { "SqlServer", "Sql Server"},
+            };
         }
 
         public PartialViewResult DisplayTable(string tableName)
@@ -52,7 +65,8 @@ namespace DatabaseSchemaReader.Website.Controllers
         {
             try
             {
-                databaseConnection.Provider = "SQLOLEDB";
+                databaseConnection.Provider = "Microsoft.ACE.OLEDB.12.0";
+
                 var connectionstringArguments = _connectionstringArgumentsMapper.Map(databaseConnection);
 
                 Connectionstring = _connectionstringBuilder.BuildConnectionString(connectionstringArguments);

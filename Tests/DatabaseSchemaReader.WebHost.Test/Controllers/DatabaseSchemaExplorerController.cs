@@ -25,10 +25,10 @@ namespace DatabaseSchemaReader.WebHost.Test.Controllers
             _connectionstringBuilder = MockRepository.GenerateStub<IConnectionstringBuilder>();
 
             _connectionstring = "validConnectionstring";
-            _connectionstringBuilder.Expect(csb => csb.BuildConnectionString(Arg<ConnectionstringArguments>.Is.Anything)).Return(_connectionstring);
+            _connectionstringBuilder.Expect(csb => csb.BuildConnectionString(Arg<SqlServerConnectionstringArguments>.Is.Anything)).Return(_connectionstring);
 
             _connectionstringArgumentsMapper = MockRepository.GenerateStub<IConnectionstringArgumentsMapper>();
-            _connectionstringArgumentsMapper.Expect(csa => csa.Map(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<string>.Is.Anything)).Return(new ConnectionstringArguments());
+            _connectionstringArgumentsMapper.Expect(csa => csa.Map(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<string>.Is.Anything)).Return(new SqlServerConnectionstringArguments());
         }
 
         [Test]

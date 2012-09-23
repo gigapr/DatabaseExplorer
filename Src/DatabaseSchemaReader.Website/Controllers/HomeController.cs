@@ -8,6 +8,5 @@ namespace DatabaseSchemaReader.Website.Controllers
         {
             return View("Index");
         }
-
     }
 }

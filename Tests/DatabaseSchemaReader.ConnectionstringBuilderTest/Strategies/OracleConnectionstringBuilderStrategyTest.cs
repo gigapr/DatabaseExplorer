@@ -13,7 +13,7 @@ namespace DatabaseSchemaReader.ConnectionstringBuilderTest.Strategies
         [TestFixtureSetUp]
         public void TestFixtureSetUp()
         {
-            var connectionstringArgumentsValidator = new ConnectionstringArgumentsValidator();
+            var connectionstringArgumentsValidator = new SqlServerConnectionstringArgumentsValidator();
 
             _connectionstringBuilderStrategy = new OracleConnectionstringBuilderStrategy(connectionstringArgumentsValidator);
         }

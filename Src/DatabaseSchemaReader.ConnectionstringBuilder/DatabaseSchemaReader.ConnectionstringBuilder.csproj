@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionstringBuilder.cs" />
+    <Compile Include="Extensions\TypeChecker.cs" />
     <Compile Include="Factories\ConnectionstringBuilderFactory.cs" />
     <Compile Include="Factories\ConnectionstringFactory.cs" />
     <Compile Include="Factories\Interfaces\IConnectionstringBuilderFactory.cs" />
@@ -49,7 +50,8 @@
     <Compile Include="Strategies\Interfaces\IConnectionstringBuilderStrategy.cs" />
     <Compile Include="Strategies\OracleConnectionstringBuilderStrategy.cs" />
     <Compile Include="Strategies\SqlServerConnectionstringBuilderStrategy.cs" />
-    <Compile Include="Validators\ConnectionstringArgumentsValidator.cs" />
+    <Compile Include="Validators\AccessConnectionstringArgumentsValidator.cs" />
+    <Compile Include="Validators\SqlServerConnectionstringArgumentsValidator.cs" />
     <Compile Include="Validators\Interfaces\IConnectionstringArgumentsValidator.cs" />
   </ItemGroup>
   <ItemGroup>

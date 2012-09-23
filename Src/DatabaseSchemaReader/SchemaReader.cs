@@ -22,7 +22,7 @@ namespace GigaWebSolution.DatabaseSchemaReader
         {
             _foreignKeyMapper = foreignKeyMapper;
             _columnMapper = columnMapper;
-            _indexMapper = indexMapper;            
+            _indexMapper = indexMapper;
         }
 
         public Table GetTable(string connectionstring, string tableName)

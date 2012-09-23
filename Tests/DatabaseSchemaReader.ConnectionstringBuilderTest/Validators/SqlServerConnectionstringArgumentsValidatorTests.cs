@@ -7,20 +7,20 @@ using NUnit.Framework;
 namespace DatabaseSchemaReader.ConnectionstringBuilderTest.Validators
 {
     [TestFixture, Category("Unit")]
-    public class ConnectionstringArgumentsValidatorTests
+    public class SqlServerConnectionstringArgumentsValidatorTests
     {
         private IConnectionstringArgumentsValidator _connectionstringArgumentsValidator;
 
         [TestFixtureSetUp]
         public void TestFixtureSetUp()
         {
-            _connectionstringArgumentsValidator = new ConnectionstringArgumentsValidator();   
+            _connectionstringArgumentsValidator = new SqlServerConnectionstringArgumentsValidator();   
         }
 
         [Test, ExpectedException(typeof(ConnectionstringArgumentsException), ExpectedMessage = "DataSource can't be null or Empty")]
         public void Should_throw_an_exception_if_datasource_is_null_or_empty()
         {
-            var connectionstringArguments = new ConnectionstringArguments
+            var connectionstringArguments = new SqlServerConnectionstringArguments
             {
                 DataSource   = "",
                 DatabaseName = "DatabaseName",
@@ -35,7 +35,7 @@ namespace DatabaseSchemaReader.ConnectionstringBuilderTest.Validators
         [Test, ExpectedException(typeof(ConnectionstringArgumentsException), ExpectedMessage = "DatabaseName can't be null or Empty")]
         public void Should_throw_an_exception_if_databasename_is_null_or_empty()
         {
-            var connectionstringArguments = new ConnectionstringArguments
+            var connectionstringArguments = new SqlServerConnectionstringArguments
             {
                 DataSource   = "DataSource",
                 DatabaseName = "",
@@ -50,7 +50,7 @@ namespace DatabaseSchemaReader.ConnectionstringBuilderTest.Validators
         [Test, ExpectedException(typeof(ConnectionstringArgumentsException), ExpectedMessage = "Provider can't be null or Empty")]
         public void Should_throw_an_exception_if_provider_is_null_or_empty()
         {
-            var connectionstringArguments = new ConnectionstringArguments
+            var connectionstringArguments = new SqlServerConnectionstringArguments
             {
                 DataSource   = "DataSource",
                 DatabaseName = "DatabaseName",
@@ -65,7 +65,7 @@ namespace DatabaseSchemaReader.ConnectionstringBuilderTest.Validators
         [Test, ExpectedException(typeof(ConnectionstringArgumentsException), ExpectedMessage = "Username can't be null or Empty")]
         public void Should_throw_an_exception_if_username_is_null_or_empty_and_password_is_not_null_or_empty()
         {
-            var connectionstringArguments = new ConnectionstringArguments
+            var connectionstringArguments = new SqlServerConnectionstringArguments
             {
                 DataSource   = "DataSource",
                 DatabaseName = "DatabaseName",
@@ -80,7 +80,7 @@ namespace DatabaseSchemaReader.ConnectionstringBuilderTest.Validators
         [Test, ExpectedException(typeof(ConnectionstringArgumentsException), ExpectedMessage = "Password can't be null or Empty")]
         public void Should_throw_an_exception_if_password_is_null_or_empty_and_username_is_not_null_or_empty()
         {
-            var connectionstringArguments = new ConnectionstringArguments
+            var connectionstringArguments = new SqlServerConnectionstringArguments
             {
                 DataSource   = "DataSource",
                 DatabaseName = "DatabaseName",
@@ -95,7 +95,7 @@ namespace DatabaseSchemaReader.ConnectionstringBuilderTest.Validators
         [Test]
         public void Should_return_true_if_username_and_password_are_null_or_empty()
         {
-            var connectionstringArguments = new ConnectionstringArguments
+            var connectionstringArguments = new SqlServerConnectionstringArguments
             {
                 DataSource   = "DataSource",
                 DatabaseName = "DatabaseName",

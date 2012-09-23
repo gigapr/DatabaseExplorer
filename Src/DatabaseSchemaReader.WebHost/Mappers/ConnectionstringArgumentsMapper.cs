@@ -11,7 +11,7 @@ namespace DatabaseSchemaReader.WebHost.Mappers
     {
         public IConnectionstringArguments Map(string databaseType, string provider, string dataSource, string databaseName, string username = "", string password = "")
         {
-            return new ConnectionstringArguments
+            return new SqlServerConnectionstringArguments
                        {
                            DatabaseType = MapToDatabaseType(databaseType),
                            Provider     = provider, 

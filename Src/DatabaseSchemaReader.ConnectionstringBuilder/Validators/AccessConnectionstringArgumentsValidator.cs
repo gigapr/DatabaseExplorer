@@ -1,27 +1,36 @@
 ﻿using DatabaseSchemaReader.ConnectionstringBuilder.Validators.Interfaces;
+using DatabaseSchemaReader.Contract.BusinessObjects;
 using DatabaseSchemaReader.Contract.BusinessObjects.Interfaces;
 using DatabaseSchemaReader.Contract.Exceptions;
 
 namespace DatabaseSchemaReader.ConnectionstringBuilder.Validators
 {
-    public class ConnectionstringArgumentsValidator : IConnectionstringArgumentsValidator
+    public class AccessConnectionstringArgumentsValidator : IConnectionstringArgumentsValidator
     {
         public bool Validate(IConnectionstringArguments connectionstringArguments)
         {
             bool isValid;
 
+            var arguments = (AccessConnectionstringArguments)connectionstringArguments;
+
             var message = string.Empty;
 
-            if (string.IsNullOrEmpty(connectionstringArguments.DataSource))
-                message = "DataSource can't be null or Empty";
-            else if(string.IsNullOrEmpty(connectionstringArguments.DatabaseName))
-                message = "DatabaseName can't be null or Empty";
-            else if (string.IsNullOrEmpty(connectionstringArguments.Provider))
+            if (string.IsNullOrEmpty(arguments.DataSource))
+            {
+                message = "DataSource can't be null or Empty.";
+            }
+            else if (string.IsNullOrEmpty(arguments.Provider))
+            {
                 message = "Provider can't be null or Empty";
-            else if (string.IsNullOrEmpty(connectionstringArguments.Password) && !string.IsNullOrEmpty(connectionstringArguments.Username))
+            }
+            else if (string.IsNullOrEmpty(arguments.Password) && !string.IsNullOrEmpty(arguments.Username))
+            {
                 message = "Password can't be null or Empty";
-            else if (string.IsNullOrEmpty(connectionstringArguments.Username) && !string.IsNullOrEmpty(connectionstringArguments.Password))
+            }
+            else if (string.IsNullOrEmpty(arguments.Username) && !string.IsNullOrEmpty(arguments.Password))
+            {
                 message = "Username can't be null or Empty";
+            }
 
             if (string.IsNullOrEmpty(message))
             {
@@ -32,7 +41,7 @@ namespace DatabaseSchemaReader.ConnectionstringBuilder.Validators
                 throw new ConnectionstringArgumentsException(message);
             }
 
-            return isValid;
+            return isValid;             
         }
     }
 }

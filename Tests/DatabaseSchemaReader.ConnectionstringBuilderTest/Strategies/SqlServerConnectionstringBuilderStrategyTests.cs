@@ -1,4 +1,5 @@
-﻿using DatabaseSchemaReader.ConnectionstringBuilder.Strategies;
+﻿using System;
+using DatabaseSchemaReader.ConnectionstringBuilder.Strategies;
 using DatabaseSchemaReader.ConnectionstringBuilder.Strategies.Interfaces;
 using DatabaseSchemaReader.ConnectionstringBuilder.Validators;
 using DatabaseSchemaReader.Contract.BusinessObjects;
@@ -14,15 +15,21 @@ namespace DatabaseSchemaReader.ConnectionstringBuilderTest.Strategies
         [TestFixtureSetUp]
         public void TestFixtureSetUp()
         {
-            var connectionstringArgumentsValidator = new ConnectionstringArgumentsValidator();  
+            var connectionstringArgumentsValidator = new SqlServerConnectionstringArgumentsValidator();  
 
             _connectionstringBuilderStrategy = new SqlServerConnectionstringBuilderStrategy(connectionstringArgumentsValidator);
+        }
+
+        [Test, ExpectedException(typeof(ArgumentException), ExpectedMessage = "SqlServerConnectionstringBuilderStrategy.BuildConnectionstring accept only type of SqlServerConnectionstringArguments, not type of DatabaseSchemaReader.Contract.BusinessObjects.AccessConnectionstringArguments.")]
+        public void Validate_should_accept_accessconnectionstringarguments_as_argument()
+        {
+            _connectionstringBuilderStrategy.BuildConnectionstring(new AccessConnectionstringArguments());
         }
 
         [Test]
         public void Should_be_able_to_build_a_sqlserver_connectionstring_whith_integrated_security()
         {
-            var connectionstringArguments = new ConnectionstringArguments
+            var connectionstringArguments = new SqlServerConnectionstringArguments
             {
                 DataSource   = "TestDatabase",
                 DatabaseName = "Test",
@@ -37,7 +44,7 @@ namespace DatabaseSchemaReader.ConnectionstringBuilderTest.Strategies
         [Test]
         public void Should_be_able_to_build_a_sqlserver_connectionstring_when_username_and_password_are_specified()
         {
-            var connectionstringArguments = new ConnectionstringArguments
+            var connectionstringArguments = new SqlServerConnectionstringArguments
             {
                 DataSource = "TestDatabase",
                 DatabaseName = "Test",

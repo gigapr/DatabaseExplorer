@@ -15,7 +15,7 @@ namespace DatabaseSchemaReader.ConnectionstringBuilderTest.Factories
         [TestFixtureSetUp]
         public void TestFixtureSetUp()
         {
-            var connectionstringParametersValidator = new ConnectionstringArgumentsValidator();
+            var connectionstringParametersValidator = new SqlServerConnectionstringArgumentsValidator();
 
             var sqlServerConnectionstringBuilderStrategy = new SqlServerConnectionstringBuilderStrategy(connectionstringParametersValidator);
 
@@ -25,7 +25,7 @@ namespace DatabaseSchemaReader.ConnectionstringBuilderTest.Factories
         [Test]
         public void Should_be_able_to_build_a_connection_string_for_sqlserver_databases()
         {
-            var connectionstringArguments = new ConnectionstringArguments
+            var connectionstringArguments = new SqlServerConnectionstringArguments
             {
                 Provider     = "SQLOLEDB",
                 DataSource   = "localhost",

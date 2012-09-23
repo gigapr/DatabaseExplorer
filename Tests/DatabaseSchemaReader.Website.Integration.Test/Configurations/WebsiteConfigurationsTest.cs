@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace DatabaseSchemaReader.Website.Integration.Test.Configurations
 {
-    [TestFixture]
+    [TestFixture, Category("Integration")]
     public class WebsiteConfigurationsTest
     {
         private IWebsiteConfigurations _websiteConfigurations;
@@ -20,6 +20,7 @@ namespace DatabaseSchemaReader.Website.Integration.Test.Configurations
         {
             Assert.IsNotNull(_websiteConfigurations.IsTestingEnviroment);
             Assert.IsTrue(_websiteConfigurations.IsTestingEnviroment);
+            Assert.AreEqual(_websiteConfigurations.ConnectionstringName, "RavenDB");
         }
     }
 }

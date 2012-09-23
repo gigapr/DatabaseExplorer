@@ -1,6 +1,6 @@
-﻿namespace DatabaseSchemaReader.Integration.Tests.Utils
+﻿namespace DatabaseSchemaReader.Integration.Tests.Utils.DatabaseHelper
 {
-    public class DatabaseHelper
+    public class SqlServerDatabaseHelper
     {
         public static void InitializeDatabase()
         {

@@ -30,7 +30,7 @@ namespace DatabaseSchemaReader.WebHost.Test.Attributes
         {
             const string tableName = "NotExsitingTable";
             
-            _connectionstringArgumentsMapper.Expect(csam => csam.Map(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<string>.Is.Anything)).Return(new ConnectionstringArguments());
+            _connectionstringArgumentsMapper.Expect(csam => csam.Map(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<string>.Is.Anything)).Return(new SqlServerConnectionstringArguments());
             
             _databaseSchemaExplorer.Expect(de => de.GetTable(Arg<IConnectionstringArguments>.Is.Anything, Arg<string>.Is.Anything)).Throw(new TableNotFoundException(tableName));
 

@@ -37,8 +37,9 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\AccessConnectionstringArguments.cs" />
     <Compile Include="BusinessObjects\Column.cs" />
-    <Compile Include="BusinessObjects\ConnectionstringArguments.cs" />
+    <Compile Include="BusinessObjects\SqlServerConnectionstringArguments.cs" />
     <Compile Include="BusinessObjects\ForeignKey.cs" />
     <Compile Include="BusinessObjects\ForeignKeyColumn.cs" />
     <Compile Include="BusinessObjects\Index.cs" />

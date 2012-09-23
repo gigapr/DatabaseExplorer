@@ -159,6 +159,10 @@
       <Project>{38C03DE4-E9E4-46E5-9DB3-F0836D49A2AD}</Project>
       <Name>DatabaseSchemaReader.Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DatabaseSchemaReader.Website\DatabaseSchemaReader.Website.csproj">
+      <Project>{64964E11-14A9-4EE5-BB44-1C2075FF60F9}</Project>
+      <Name>DatabaseSchemaReader.Website</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DatabaseSchemaReader\DatabaseSchemaReader.csproj">
       <Project>{8EC40820-AAF7-4102-8F2D-1BD6261D9133}</Project>
       <Name>DatabaseSchemaReader</Name>
