@@ -6,7 +6,7 @@ namespace DatabaseSchemaReader.Contract.BusinessObjects.Interfaces
     {
         string Provider           { get; set; }
         string DataSource         { get; set; } 
-        //string DatabaseName       { get; set; } 
+        string DatabaseName       { get; set; } 
         string Username           { get; set; } 
         string Password           { get; set; }
         DatabaseType DatabaseType { get; set; }

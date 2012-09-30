@@ -119,8 +119,11 @@
     <Compile Include="Configurations\Interfaces\IWebsiteConfigurations.cs" />
     <Compile Include="Configurations\WebsiteConfigurations.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Factories\ConnectionstringArgumentsMapperFactory.cs" />
+    <Compile Include="Factories\Interfaces\IConnectionstringArgumentsMapperFactory.cs" />
     <Compile Include="IoC\Bootstrapper.cs" />
-    <Compile Include="Mappers\ConnectionstringArgumentsMapper.cs" />
+    <Compile Include="Mappers\AccessConnectionstringArgumentsMapper.cs" />
+    <Compile Include="Mappers\SqlServerConnectionstringArgumentsMapper.cs" />
     <Compile Include="Mappers\Interfaces\IUserMapper.cs" />
     <Compile Include="Mappers\Interfaces\IConnectionstringArgumentsMapper.cs" />
     <Compile Include="Mappers\UserMapper.cs" />

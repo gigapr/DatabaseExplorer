@@ -31,7 +31,6 @@ namespace DatabaseSchemaReader.WebHost.Integration.Test.Controllers
             SqlServerDatabaseHelper.InitializeDatabase();
             SqlServerDatabaseHelper.CreateUser(Username, Password);
 
-            var connectionstringArgumentsValidator = new SqlServerConnectionstringArgumentsValidator();
             var connectionstringBuilderFactory = new ConnectionstringBuilderFactory();
             var connectionstringBuilder = new ConnectionstringBuilder.ConnectionstringBuilder(connectionstringBuilderFactory);
 

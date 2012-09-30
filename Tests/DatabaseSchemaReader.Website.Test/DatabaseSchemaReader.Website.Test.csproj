@@ -55,7 +55,8 @@
     <Compile Include="Controllers\AccountControllerTest.cs" />
     <Compile Include="Controllers\DatabaseExplorerControllerTest.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
-    <Compile Include="Mappers\ConnectionstringArgumentsMapperTest.cs" />
+    <Compile Include="Factories\ConnectionstringArgumentsMapperFactoryTests.cs" />
+    <Compile Include="Mappers\SqlServerConnectionstringArgumentsMapperTest.cs" />
     <Compile Include="Mappers\UserMapperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

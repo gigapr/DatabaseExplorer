@@ -9,8 +9,14 @@
                 @Html.ValidationSummary(true)
                 <div>
                     <span class="connectionFormLabel">Database Type</span>
-                    @Html.DropDownListFor(x => x.DatabaseType, Model.DatabaseType, "- Select -")
+                    @Html.DropDownList("DatabaseType", ViewData["DatabaseType"] as SelectList, "- Select -")
                     @Html.ValidationMessageFor(model => model.DatabaseType)
+                </div>
+                
+                <div>
+                    <span class="connectionFormLabel">Provider</span>
+                    @Html.EditorFor(model => model.Provider)
+                    @Html.ValidationMessageFor(model => model.Provider)
                 </div>
 
                 <div>

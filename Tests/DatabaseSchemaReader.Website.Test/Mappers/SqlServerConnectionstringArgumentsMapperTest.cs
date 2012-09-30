@@ -1,4 +1,5 @@
-﻿using DatabaseSchemaReader.Website.Model;
+﻿using DatabaseSchemaReader.Contract.BusinessObjects.Interfaces;
+using DatabaseSchemaReader.Website.Model;
 using DatabaseSchemaReader.Website.Mappers;
 using DatabaseSchemaReader.Website.Mappers.Interfaces;
 using NUnit.Framework;
@@ -6,14 +7,14 @@ using NUnit.Framework;
 namespace DatabaseSchemaReader.Website.Test.Mappers
 {
     [TestFixture, Category("Unit")]
-    public class ConnectionstringArgumentsMapperTest
+    public class SqlServerConnectionstringArgumentsMapperTest
     {
         private IConnectionstringArgumentsMapper _connectionstringArgumentsMapper;
  
         [SetUp]
         public void SetUp()
         {
-            _connectionstringArgumentsMapper = new ConnectionstringArgumentsMapper();    
+            _connectionstringArgumentsMapper = new SqlServerConnectionstringArgumentsMapper();    
         }
 
         [Test]

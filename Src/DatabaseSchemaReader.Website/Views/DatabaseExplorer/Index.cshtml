@@ -17,10 +17,6 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/sliders.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/queryBuilder.js")"></script>
-    <script type="text/javascript" language="javascript">
-        var queryBuilder = new QueryBuilder();
-        var tablesManager = new TablesManager();              
-    </script>
 }
 <div class="header">
     @Html.ActionLink("Back to Home", "Index", "Home", null, new { @class = "floatL" })
@@ -29,8 +25,8 @@
     </div>
 </div>
 
-@Html.Partial("Connection", Model.DatabaseConnection)
-@Html.Partial("TablesList", Model.Tables != null && Model.Tables.Count > 0 ? Model.Tables.Select(table => table.Name).ToList() : new List<string>())
+@Html.Partial("Connection")
+@Html.Partial("TablesList")
 
 <div id="tablesContainer">
 </div>

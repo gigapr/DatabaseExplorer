@@ -37,11 +37,13 @@ namespace DatabaseSchemaReader.ConnectionstringBuilder.Strategies
 
                 throw new ArgumentException(message);
             }
-            
+
+            connectionstring = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Git\DatabaseExplorer\Tests\DatabaseSchemaReader.Integration.Tests\Resources\Northwind.accdb;";
+
             return connectionstring;
         }
 
-        private static string BuildConnectionString(AccessConnectionstringArguments arguments)
+        private static string BuildConnectionString(IConnectionstringArguments arguments)
         {
             string connectionString;
 

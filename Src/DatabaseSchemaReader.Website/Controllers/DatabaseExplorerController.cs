@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using DatabaseSchemaReader.ConnectionstringBuilder.Interfaces;
+using DatabaseSchemaReader.Website.Factories.Interfaces;
 using DatabaseSchemaReader.Website.Model;
-using DatabaseSchemaReader.Website.Mappers.Interfaces;
-using DatabaseSchemaReader.Website.ViewModels;
 using GigaWebSolution.DatabaseSchemaReader.Interfaces;
 
 namespace DatabaseSchemaReader.Website.Controllers
@@ -19,32 +18,25 @@ namespace DatabaseSchemaReader.Website.Controllers
         }
 
         private readonly ISchemaReader _schemaReader;
-        private readonly IConnectionstringBuilder _connectionstringBuilder;
-        private readonly IConnectionstringArgumentsMapper _connectionstringArgumentsMapper;
+        private readonly IConnectionstringBuilder _connectionstringBuilder;        
+        private readonly IConnectionstringArgumentsMapperFactory _connectionstringArgumentsMapperFactory;
 
-        public DatabaseExplorerController(ISchemaReader schemaReader, IConnectionstringBuilder connectionstringBuilder, IConnectionstringArgumentsMapper connectionstringArgumentsMapper)
+        public DatabaseExplorerController(ISchemaReader schemaReader, 
+                                          IConnectionstringBuilder connectionstringBuilder, 
+                                          IConnectionstringArgumentsMapperFactory connectionstringArgumentsMapperFactory)
         {
             _schemaReader = schemaReader;
             _connectionstringBuilder = connectionstringBuilder;
-            _connectionstringArgumentsMapper = connectionstringArgumentsMapper;
+            _connectionstringArgumentsMapperFactory = connectionstringArgumentsMapperFactory;
         }
 
         public ActionResult Index()
         {
-            var databaseConnection = new DatabaseConnection { DatabaseType = new SelectList(GetDatabaseTypes(), "key", "value") };
+            var databaseTypes = GetDatabaseTypes();
 
-            var databaseExplorer = new DatabaseExplorer {DatabaseConnection = databaseConnection};  
+            ViewData["DatabaseType"] = new SelectList(databaseTypes, "key", "value");
 
-            return View("Index", databaseExplorer);
-        }
-
-        private IEnumerable GetDatabaseTypes()
-        {
-            return new Dictionary<string, string>
-            {
-                { "Access", "Access"},
-                { "SqlServer", "Sql Server"},
-            };
+            return View("Index");
         }
 
         public PartialViewResult DisplayTable(string tableName)
@@ -61,13 +53,15 @@ namespace DatabaseSchemaReader.Website.Controllers
             return Json(foreignKeys, JsonRequestBehavior.AllowGet);
         }
 
+        [ValidateInput(false)]
+        [AcceptVerbs(HttpVerbs.Post)]
         public PartialViewResult GetTablesList(DatabaseConnection databaseConnection)
         {
             try
             {
-                databaseConnection.Provider = "Microsoft.ACE.OLEDB.12.0";
+                var connectionstringArgumentMapper = _connectionstringArgumentsMapperFactory.Make(databaseConnection.DatabaseType);
 
-                var connectionstringArguments = _connectionstringArgumentsMapper.Map(databaseConnection);
+                var connectionstringArguments = connectionstringArgumentMapper.Map(databaseConnection);
 
                 Connectionstring = _connectionstringBuilder.BuildConnectionString(connectionstringArguments);
 
@@ -81,6 +75,15 @@ namespace DatabaseSchemaReader.Website.Controllers
 
                 return PartialView("Error", message);
             }            
+        }
+
+        private static IEnumerable GetDatabaseTypes()
+        {
+            return new Dictionary<string, string>
+            {
+                { "Access", "Access"},
+                { "SqlServer", "Sql Server"},
+            };
         }
     }
 }

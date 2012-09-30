@@ -8,7 +8,10 @@ using DatabaseSchemaReader.ConnectionstringBuilder.Interfaces;
 using DatabaseSchemaReader.Contract.BusinessObjects;
 using DatabaseSchemaReader.Contract.BusinessObjects.Interfaces;
 using DatabaseSchemaReader.Website.Controllers;
-using DatabaseSchemaReader.Website.Mappers.Interfaces;
+using DatabaseSchemaReader.Website.Factories;
+using DatabaseSchemaReader.Website.Factories.Interfaces;
+using DatabaseSchemaReader.Website.Mappers;
+using DatabaseSchemaReader.Website.Model;
 using GigaWebSolution.DatabaseSchemaReader.Interfaces;
 using NUnit.Framework;
 using Rhino.Mocks;
@@ -23,7 +26,8 @@ namespace DatabaseSchemaReader.Website.Test.Controllers
         private IConnectionstringBuilder _connectionstringBuilder;
         private HttpContextBase _context;
         private HttpSessionStateBase _session;
-        private IConnectionstringArgumentsMapper _connectionstringArgumentsMapper;
+        private IConnectionstringArgumentsMapperFactory _connectionstringArgumentsMapperFactory;
+
         private const string Connectionstring = "Provider=SQLOLEDB;Data Source=localhost;Initial Catalog=Blog;Integrated Security=SSPI;OLE DB Services=-4;";   
 
         [SetUp]
@@ -36,11 +40,11 @@ namespace DatabaseSchemaReader.Website.Test.Controllers
             _context.Stub(c => c.Session).Return(_session);
 
             _connectionstringBuilder = MockRepository.GenerateStub<IConnectionstringBuilder>();
+            _connectionstringBuilder.Expect(cb => cb.BuildConnectionString(Arg<IConnectionstringArguments>.Is.Anything)).Return(Connectionstring);
 
-            _connectionstringBuilder.Expect(cb => cb.BuildConnectionString(Arg<IConnectionstringArguments>.Is.Anything))
-                                    .Return(Connectionstring);
-
-            _connectionstringArgumentsMapper = MockRepository.GenerateMock<IConnectionstringArgumentsMapper>();
+            var sqlServerConnectionstringArgumentsMapper = new SqlServerConnectionstringArgumentsMapper();
+            _connectionstringArgumentsMapperFactory = MockRepository.GenerateStrictMock<IConnectionstringArgumentsMapperFactory>();
+            _connectionstringArgumentsMapperFactory.Expect(factory => factory.Make(Arg<string>.Is.Anything)).Return(sqlServerConnectionstringArgumentsMapper);
 
             _schemaReader = MockRepository.GenerateStub<ISchemaReader>();            
         }
@@ -65,7 +69,7 @@ namespace DatabaseSchemaReader.Website.Test.Controllers
             
             _schemaReader.Expect(sr => sr.GetTable(Arg<string>.Is.Anything, Arg<string>.Is.Anything)).Return(table);
 
-            _databaseExplorerController = new DatabaseExplorerController(_schemaReader, _connectionstringBuilder, _connectionstringArgumentsMapper);
+            _databaseExplorerController = new DatabaseExplorerController(_schemaReader, _connectionstringBuilder, _connectionstringArgumentsMapperFactory);
             _databaseExplorerController.ControllerContext = new ControllerContext(_context, new RouteData(),_databaseExplorerController );
 
             var result = _databaseExplorerController.DisplayTable(tableName);
@@ -95,7 +99,9 @@ namespace DatabaseSchemaReader.Website.Test.Controllers
 
             _schemaReader.Expect(sr => sr.GetForeignKeys(Connectionstring)).Return(foreignKeys);
 
-            _databaseExplorerController = new DatabaseExplorerController(_schemaReader, _connectionstringBuilder, _connectionstringArgumentsMapper);
+            _connectionstringArgumentsMapperFactory = new ConnectionstringArgumentsMapperFactory();
+
+            _databaseExplorerController = new DatabaseExplorerController(_schemaReader, _connectionstringBuilder, _connectionstringArgumentsMapperFactory);
             _databaseExplorerController.ControllerContext = new ControllerContext(_context, new RouteData(), _databaseExplorerController);
 
             var result = _databaseExplorerController.GetForeignKeyConnections() as JsonResult;
@@ -107,6 +113,18 @@ namespace DatabaseSchemaReader.Website.Test.Controllers
             Console.WriteLine(output);
 
             Assert.AreEqual("[{\"Name\":null,\"OriginalName\":null,\"ForeignKeyTableName\":\"ForeignKeyTableName\",\"ForeignKeyTableSchema\":null,\"ForeignKeyColumns\":[{\"Name\":\"foreignKeyColumn\"}],\"PrimaryKeyTableName\":\"PrimaryKeyTableName\",\"PrimaryKeyTableSchema\":null,\"PrimaryKeysColumns\":[{\"Name\":\"primaryKeyColumn\"}]}]", output);
+        }
+
+        [Test]
+        public void Should_use_connectionstringargumentsmapperfactory_to_make_aconnectionstringargumentmapper()
+        {
+            const string databaseType = "Access";
+
+            _databaseExplorerController = new DatabaseExplorerController(_schemaReader, _connectionstringBuilder, _connectionstringArgumentsMapperFactory);
+            
+            _databaseExplorerController.GetTablesList(new DatabaseConnection{ DatabaseType = databaseType});
+
+            _connectionstringArgumentsMapperFactory.AssertWasCalled(factory => factory.Make(databaseType));
         }
     }
 }

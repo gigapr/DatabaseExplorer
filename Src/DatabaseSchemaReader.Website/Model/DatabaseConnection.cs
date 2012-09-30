@@ -9,6 +9,9 @@ namespace DatabaseSchemaReader.Website.Model
         [Required(ErrorMessage = "Datasource is required")]
         public string DataSource   { get; set; }
 
+        [Required(ErrorMessage = "Provider is required")]
+        public string Provider { get; set; }
+
         [Required(ErrorMessage = "Database Name is required")]
         public string DatabaseName { get; set; }
 
@@ -20,8 +23,6 @@ namespace DatabaseSchemaReader.Website.Model
         public string Password     { get; set; }
 
         [Required(ErrorMessage = "Databse Type is required")]
-        public SelectList DatabaseType { get; set; }
-
-        public string Provider    { get; set; }
+        public string DatabaseType { get; set; }
     }
 }

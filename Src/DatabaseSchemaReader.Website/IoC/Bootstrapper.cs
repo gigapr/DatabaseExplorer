@@ -3,9 +3,9 @@ using System.Web.Mvc;
 using DatabaseSchemaReader.ConnectionstringBuilder.Factories;
 using DatabaseSchemaReader.ConnectionstringBuilder.Factories.Interfaces;
 using DatabaseSchemaReader.ConnectionstringBuilder.Interfaces;
-using DatabaseSchemaReader.ConnectionstringBuilder.Validators;
-using DatabaseSchemaReader.ConnectionstringBuilder.Validators.Interfaces;
 using DatabaseSchemaReader.Website.Configurations.Interfaces;
+using DatabaseSchemaReader.Website.Factories;
+using DatabaseSchemaReader.Website.Factories.Interfaces;
 using DatabaseSchemaReader.Website.Mappers;
 using DatabaseSchemaReader.Website.Mappers.Interfaces;
 using GigaWebSolution.DatabaseSchemaReader;
@@ -35,11 +35,12 @@ namespace DatabaseSchemaReader.Website.IoC
 
             var websiteConfigurations = (IWebsiteConfigurations)ConfigurationManager.GetSection("websiteConfiguration");
             container.RegisterInstance(typeof(IWebsiteConfigurations), websiteConfigurations);
-            container.RegisterType<IConnectionstringArgumentsMapper, ConnectionstringArgumentsMapper>();
+            container.RegisterType<IConnectionstringArgumentsMapper, SqlServerConnectionstringArgumentsMapper>();
             container.RegisterType<ISchemaReader, SchemaReader>();
 
             container.RegisterType<IConnectionstringBuilder, ConnectionstringBuilder.ConnectionstringBuilder>();
             container.RegisterType<IConnectionstringBuilderFactory, ConnectionstringBuilderFactory>();
+            container.RegisterType<IConnectionstringArgumentsMapperFactory, ConnectionstringArgumentsMapperFactory>();
 
             container.RegisterType<IForeignKeyMapper, ForeignKeyMapper>();
             container.RegisterType<IColumnMapper, ColumnMapper>();
