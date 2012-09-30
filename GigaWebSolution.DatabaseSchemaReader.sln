@@ -37,6 +37,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.Websit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.Website.Integration.Test", "Tests\DatabaseSchemaReader.Website.Integration.Test\DatabaseSchemaReader.Website.Integration.Test.csproj", "{3FAB9AD9-370F-4AA0-8E14-BF2DA77ED25D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CFE524D4-C8C3-486C-8760-AF9846C09AEA}"
+	ProjectSection(SolutionItems) = preProject
+		Info.txt = Info.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

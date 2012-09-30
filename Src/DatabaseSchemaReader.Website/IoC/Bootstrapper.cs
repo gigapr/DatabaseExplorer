@@ -45,7 +45,8 @@ namespace DatabaseSchemaReader.Website.IoC
             container.RegisterType<IForeignKeyMapper, ForeignKeyMapper>();
             container.RegisterType<IColumnMapper, ColumnMapper>();
             container.RegisterType<IIndexMapper, IndexMapper>();
-
+            container.RegisterType<IUserMapper, UserMapper>();
+            
             var store = InitalizeRavenDbDocumentStore(websiteConfigurations);
 
             container.RegisterInstance(store);
