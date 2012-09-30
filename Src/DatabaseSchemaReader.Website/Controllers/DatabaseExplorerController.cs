@@ -65,6 +65,11 @@ namespace DatabaseSchemaReader.Website.Controllers
 
                 Connectionstring = _connectionstringBuilder.BuildConnectionString(connectionstringArguments);
 
+                if(databaseConnection.DatabaseType == "Access")
+                {
+                    Connectionstring = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Git\DatabaseExplorer\Tests\DatabaseSchemaReader.Integration.Tests\Resources\Marketing Projects.accdb;";
+                }
+
                 var tables = _schemaReader.GetTablesName(Connectionstring);
               
                 return PartialView("TablesList", tables);

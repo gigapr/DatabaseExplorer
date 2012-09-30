@@ -1,4 +1,5 @@
 ﻿using DatabaseSchemaReader.Contract.BusinessObjects.Interfaces;
+using DatabaseSchemaReader.Contract.Enums;
 using DatabaseSchemaReader.Website.Model;
 using DatabaseSchemaReader.Website.Mappers;
 using DatabaseSchemaReader.Website.Mappers.Interfaces;
@@ -26,7 +27,8 @@ namespace DatabaseSchemaReader.Website.Test.Mappers
                 DatabaseName = "DatabaseName",
                 Password     = "Password",
                 Username     = "Username",
-                Provider     = "Provider" 
+                Provider     = "Provider",
+                DatabaseType = "SqlServer"
             };
 
             var connectionstringArguments = _connectionstringArgumentsMapper.Map(databaseConnection);
@@ -37,6 +39,7 @@ namespace DatabaseSchemaReader.Website.Test.Mappers
             Assert.AreEqual("Provider", connectionstringArguments.Provider);
             Assert.AreEqual("Username", connectionstringArguments.Username);
             Assert.AreEqual("Password", connectionstringArguments.Password);
+            Assert.AreEqual(DatabaseType.SqlServer, connectionstringArguments.DatabaseType);
         }
     }
 }
