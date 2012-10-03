@@ -107,11 +107,18 @@ input[type="submit"]:hover {
     display: none;
 }
 
-#connectionPanel input[type="text"], input[type="password"]  {
+#connectionPanel input[type="select"], input[type="text"], input[type="password"]  {
     border-radius: 7px 7px 7px 7px;
     height: 20px;
     width: 180px;
     padding-left: 4px;
+}
+
+select {
+    border-radius: 6px 6px 6px 6px;
+    height: 23px;
+    padding-top: 1px;
+    width: 187px;
 }
 
 #connectionPanel div {
