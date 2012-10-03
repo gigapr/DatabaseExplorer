@@ -18,7 +18,7 @@ namespace DatabaseSchemaReader.Website.Controllers
         }
 
         [HttpPost]
-        public ActionResult SignIn(SignIn signIn)
+        public ViewResult SignIn(SignIn signIn)
         {
             var user = _userMapper.Map(signIn);
 
@@ -29,7 +29,7 @@ namespace DatabaseSchemaReader.Website.Controllers
                 session.SaveChanges();
             }
 
-            return View();
+            return View("DatabaseExplorer");
         }
 
         [HttpPost]
