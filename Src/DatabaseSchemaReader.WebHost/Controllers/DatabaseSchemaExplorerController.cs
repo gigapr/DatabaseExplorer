@@ -8,7 +8,7 @@ using DatabaseSchemaReader.WebHost.Mappers.Interfaces;
 namespace DatabaseSchemaReader.WebHost.Controllers
 {
     [SchemaExplorerExceptionHandler]
-    public class DatabaseSchemaExplorerController : ApiController
+    public class DatabaseSchemaExplorerController : System.Web.Http.ApiController
     {
         private readonly IConnectionstringArgumentsMapper _connectionstringArgumentsMapper;
         private readonly IDatabaseSchemaExplorer _schemaExplorer;

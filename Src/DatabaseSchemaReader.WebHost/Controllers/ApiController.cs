@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace DatabaseSchemaReader.WebHost.Controllers
 {
-    public class HomeController : Controller
+    public class ApiController : Controller
     {
         public ActionResult Index()
         {

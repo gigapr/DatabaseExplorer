@@ -17,9 +17,10 @@ namespace DatabaseSchemaReader.Website
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                "Default", 
+                "WebsiteDefault", 
                 "{controller}/{action}/{id}", 
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } 
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new[] { "DatabaseSchemaReader.Website" }
             );
         }
 
