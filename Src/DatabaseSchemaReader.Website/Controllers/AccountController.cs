@@ -1,33 +1,22 @@
 ﻿using System.Web.Mvc;
-using DatabaseSchemaReader.Website.Mappers.Interfaces;
-using DatabaseSchemaReader.Website.Model;
+using DatabaseSchemaReader.Website.Services.Interfaces;
 using DatabaseSchemaReader.Website.ViewModels;
-using Raven.Client;
 
 namespace DatabaseSchemaReader.Website.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IDocumentStore _documentStore;
-        private readonly IUserMapper _userMapper;
+        private readonly IAccountService _accountService;
 
-        public AccountController(IDocumentStore documentStore, IUserMapper userMapper)
+        public AccountController(IAccountService accountService)
         {
-            _documentStore = documentStore;
-            _userMapper = userMapper;
+            _accountService = accountService;
         }
 
         [HttpPost]
-        public ViewResult SignIn(SignIn signIn)
+        public ActionResult SignIn(SignIn signIn)
         {
-            var user = _userMapper.Map(signIn);
-
-            using (var session = _documentStore.OpenSession())
-            {
-                session.Load<User>(user.Email, user.Password);
-
-                session.SaveChanges();
-            }
+            _accountService.SignIn(signIn);
 
             return View("DatabaseExplorer");
         }
@@ -35,16 +24,11 @@ namespace DatabaseSchemaReader.Website.Controllers
         [HttpPost]
         public ActionResult Register(Register register)
         {
-            var user = _userMapper.Map(register);
+            var succeeded = _accountService.RegisterUser(register);
 
-            using (var session = _documentStore.OpenSession())
-            {
-                session.Store(user);
+            var message = succeeded ? "User successfully registered" : string.Format("User with email '{0}' already exist.", register.Email);
 
-                session.SaveChanges();
-            }    
-
-            return View();
-        }
+            return  Json(new { succeeded = succeeded, message = message});
+        }        
     }
 }

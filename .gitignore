@@ -1,3 +1,4 @@
 /_ReSharper.GigaWebSolution.DatabaseSchemaReader/
 /packages/
 /*.*.suo
+*.DotSettings.user

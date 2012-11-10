@@ -1,0 +1,44 @@
+﻿@model string
+
+<ul class="nav">
+    @if (Model == "Home")
+    {
+        <li>Home</li>
+    }
+    else
+    {
+        <li><a href="#section1">Home</a></li>
+    }
+    @if (Model == "Explorer")
+    {
+        <li>Explorer</li>
+    }
+    else
+    {
+        <li><a href="#section2">Explorer</a></li>
+    }
+    @if (Model == "Web Api")
+    {
+        <li>Web Api</li>
+    }
+    else
+    {
+        <li><a href="#section3">Web Api</a></li>
+    }
+    @if (Model == "Sign In")
+    {
+        <li>Sign In</li>
+    }
+    else
+    {
+        <li><a href="#section4">Sign In</a></li>
+    }
+    @if (Model == "Register")
+    {
+        <li>Sign In</li>
+    }
+    else
+    {
+        <li><a href="#section5">Register</a></li>
+    }
+</ul>

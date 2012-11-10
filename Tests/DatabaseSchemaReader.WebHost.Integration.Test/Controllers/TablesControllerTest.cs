@@ -1,7 +1,6 @@
 ﻿using System.Data.OleDb;
 using System.Linq;
 using DatabaseSchemaReader.ConnectionstringBuilder.Factories;
-using DatabaseSchemaReader.ConnectionstringBuilder.Validators;
 using DatabaseSchemaReader.Contract.BusinessObjects;
 using DatabaseSchemaReader.Integration.Tests.Utils.DatabaseHelper;
 using DatabaseSchemaReader.Service;
@@ -21,7 +20,7 @@ namespace DatabaseSchemaReader.WebHost.Integration.Test.Controllers
         private const string DatabaseName = "Blog";
         private const string DatabaseType = "SqlServer";
         private const string Username = "username";
-        private const string Password = "password";
+        private const string Password = "Password1!2!";
 
         private DatabaseSchemaExplorerController _databaseSchemaExplorerController;
         

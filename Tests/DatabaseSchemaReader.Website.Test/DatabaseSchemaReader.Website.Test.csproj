@@ -113,6 +113,7 @@
     <Compile Include="Mappers\SqlServerConnectionstringArgumentsMapperTest.cs" />
     <Compile Include="Mappers\UserMapperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AccountServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -137,6 +138,10 @@
     <ProjectReference Include="..\..\Src\DatabaseSchemaReader\DatabaseSchemaReader.csproj">
       <Project>{8EC40820-AAF7-4102-8F2D-1BD6261D9133}</Project>
       <Name>DatabaseSchemaReader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseSchemaReader.Tests.Helper\DatabaseSchemaReader.Tests.Helper.csproj">
+      <Project>{B54151A1-8DDF-400E-A75D-4B624B2B60F0}</Project>
+      <Name>DatabaseSchemaReader.Tests.Helper</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

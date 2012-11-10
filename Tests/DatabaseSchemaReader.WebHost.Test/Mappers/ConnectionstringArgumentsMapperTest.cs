@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace DatabaseSchemaReader.WebHost.Test.Mappers
 {
-    [TestFixture, Category("Unit")]//TODO
+    [TestFixture, Category("Unit")]
     public class ConnectionstringArgumentsMapperTest
     {
         private IConnectionstringArgumentsMapper _connectionstringArgumentsMapper;
@@ -33,7 +33,7 @@ namespace DatabaseSchemaReader.WebHost.Test.Mappers
             Assert.AreEqual(DatabaseType.SqlServer, connectionstringArguments.DatabaseType);
             Assert.AreEqual("SQLOLEDB", connectionstringArguments.Provider);
             Assert.AreEqual("DataSource", connectionstringArguments.DataSource);
-           // Assert.AreEqual("DatabaseName", connectionstringArguments.DatabaseName);
+            Assert.AreEqual("DatabaseName", connectionstringArguments.DatabaseName);
             Assert.AreEqual("Username", connectionstringArguments.Username);
             Assert.AreEqual("Password", connectionstringArguments.Password);
         }
@@ -51,7 +51,7 @@ namespace DatabaseSchemaReader.WebHost.Test.Mappers
             Assert.IsNotNull(connectionstringArguments);
             Assert.AreEqual(DatabaseType.SqlServer, connectionstringArguments.DatabaseType);
             Assert.AreEqual("DataSource", connectionstringArguments.DataSource);
-            //Assert.AreEqual("DatabaseName", connectionstringArguments.DatabaseName);
+            Assert.AreEqual("DatabaseName", connectionstringArguments.DatabaseName);
         }
 
         [TestCase("SqlServer", Result = DatabaseType.SqlServer)]

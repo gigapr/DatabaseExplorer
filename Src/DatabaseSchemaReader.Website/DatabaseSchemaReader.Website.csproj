@@ -135,6 +135,7 @@
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
@@ -163,6 +164,8 @@
     <Compile Include="Model\Interfaces\IDatabaseConnection.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Interfaces\IUser.cs" />
+    <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\Interfaces\IAccountService.cs" />
     <Compile Include="ViewModels\DatabaseExplorer.cs" />
     <Compile Include="ViewModels\SignIn.cs" />
     <Compile Include="ViewModels\Register.cs" />
@@ -209,6 +212,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Menu.cshtml" />
     <None Include="_bin_deployableAssemblies\System.Web.Mvc.dll" />
     <None Include="_bin_deployableAssemblies\WebMatrix.WebData.xml" />
     <None Include="_bin_deployableAssemblies\WebMatrix.WebData.dll" />

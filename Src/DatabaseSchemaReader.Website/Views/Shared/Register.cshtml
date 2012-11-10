@@ -1,12 +1,6 @@
 ﻿@model DatabaseSchemaReader.Website.ViewModels.Register
 <div class="section black" id="section5">
-    <ul class="nav">
-        <li><a href="#section1">Home</a></li>
-        <li><a href="#section2">Explorer</a></li>
-        <li><a href="#section3">Web Api</a></li>
-        <li><a href="#section4">Sign In</a></li>
-        <li>Register</li>
-    </ul>
+    @Html.Partial("Menu", "Register")
     <h2>Register</h2>
     <p class="description">
         Already registred? <a href="#section5" id="registerTrigger" class="blue">Sign In</a>

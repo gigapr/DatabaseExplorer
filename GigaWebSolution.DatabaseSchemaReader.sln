@@ -37,10 +37,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.Websit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.Website.Integration.Test", "Tests\DatabaseSchemaReader.Website.Integration.Test\DatabaseSchemaReader.Website.Integration.Test.csproj", "{3FAB9AD9-370F-4AA0-8E14-BF2DA77ED25D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CFE524D4-C8C3-486C-8760-AF9846C09AEA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Info", "Info", "{CFE524D4-C8C3-486C-8760-AF9846C09AEA}"
 	ProjectSection(SolutionItems) = preProject
 		Info.txt = Info.txt
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemaReader.Tests.Helper", "Tests\DatabaseSchemaReader.Tests.Helper\DatabaseSchemaReader.Tests.Helper.csproj", "{B54151A1-8DDF-400E-A75D-4B624B2B60F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -130,6 +132,12 @@ Global
 		{3FAB9AD9-370F-4AA0-8E14-BF2DA77ED25D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FAB9AD9-370F-4AA0-8E14-BF2DA77ED25D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3FAB9AD9-370F-4AA0-8E14-BF2DA77ED25D}.Release|x86.ActiveCfg = Release|Any CPU
+		{B54151A1-8DDF-400E-A75D-4B624B2B60F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B54151A1-8DDF-400E-A75D-4B624B2B60F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B54151A1-8DDF-400E-A75D-4B624B2B60F0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B54151A1-8DDF-400E-A75D-4B624B2B60F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B54151A1-8DDF-400E-A75D-4B624B2B60F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B54151A1-8DDF-400E-A75D-4B624B2B60F0}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -142,6 +150,7 @@ Global
 		{0003F3DD-368A-40EA-BF20-5B6B79F6B67D} = {B554A9A7-1BAC-47BB-8856-E9D70324D2C9}
 		{D3AB8C7D-2FD7-413B-A98C-EAAEF0269E96} = {B554A9A7-1BAC-47BB-8856-E9D70324D2C9}
 		{3FAB9AD9-370F-4AA0-8E14-BF2DA77ED25D} = {B554A9A7-1BAC-47BB-8856-E9D70324D2C9}
+		{B54151A1-8DDF-400E-A75D-4B624B2B60F0} = {B554A9A7-1BAC-47BB-8856-E9D70324D2C9}
 		{8EC40820-AAF7-4102-8F2D-1BD6261D9133} = {D7FC4265-C1AF-4481-AB74-9CC42510DDFD}
 		{B812845E-1B46-44FF-9C21-1C15FD88F4C3} = {D7FC4265-C1AF-4481-AB74-9CC42510DDFD}
 		{0DA1865D-838D-463D-817C-E6D39DAA3675} = {D7FC4265-C1AF-4481-AB74-9CC42510DDFD}

@@ -8,6 +8,8 @@ using DatabaseSchemaReader.Website.Factories;
 using DatabaseSchemaReader.Website.Factories.Interfaces;
 using DatabaseSchemaReader.Website.Mappers;
 using DatabaseSchemaReader.Website.Mappers.Interfaces;
+using DatabaseSchemaReader.Website.Services;
+using DatabaseSchemaReader.Website.Services.Interfaces;
 using GigaWebSolution.DatabaseSchemaReader;
 using GigaWebSolution.DatabaseSchemaReader.Interfaces;
 using GigaWebSolution.DatabaseSchemaReader.Mappers;
@@ -22,6 +24,8 @@ namespace DatabaseSchemaReader.Website.IoC
 {
     public static class Bootstrapper
     {
+        public static IDocumentStore Store;
+
         public static void Initialise()
         {
             var container = BuildUnityContainer();
@@ -46,6 +50,8 @@ namespace DatabaseSchemaReader.Website.IoC
             container.RegisterType<IColumnMapper, ColumnMapper>();
             container.RegisterType<IIndexMapper, IndexMapper>();
             container.RegisterType<IUserMapper, UserMapper>();
+
+            container.RegisterType<IAccountService, AccountService>();
             
             var store = InitalizeRavenDbDocumentStore(websiteConfigurations);
 
@@ -56,11 +62,9 @@ namespace DatabaseSchemaReader.Website.IoC
 
         private static IDocumentStore InitalizeRavenDbDocumentStore(IWebsiteConfigurations websiteConfigurations)
         {
-            IDocumentStore store;
-
             if (websiteConfigurations.IsTestingEnviroment)
             {
-                store = new EmbeddableDocumentStore
+                Store = new EmbeddableDocumentStore
                 {
                     DataDirectory = "Data",
                     RunInMemory = true,
@@ -69,15 +73,15 @@ namespace DatabaseSchemaReader.Website.IoC
             }
             else
             {
-                store = new DocumentStore
+                Store = new DocumentStore
                 {
                     ConnectionStringName = websiteConfigurations.ConnectionstringName
                 };
             }
 
-            store.Initialize();
+            Store.Initialize();
 
-            return store;
+            return Store;
         }
     }
 }

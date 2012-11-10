@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace DatabaseSchemaReader.Integration.Tests.SchemaReader
 {
-    [TestFixture, Category("Integration")]
+    [TestFixture, Category("Integration"), Ignore("Requires Microsoft Office Access database engine")]
     public class AccessSchemaReaderTests
     {
         private const string DatabseFilePath = @"..\..\Resources\Northwind.accdb";
