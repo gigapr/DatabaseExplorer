@@ -1,0 +1,6 @@
+﻿.section ul{
+    left: 30px;
+    list-style: none outside none;
+    position: relative;
+    top: -30px;
+}

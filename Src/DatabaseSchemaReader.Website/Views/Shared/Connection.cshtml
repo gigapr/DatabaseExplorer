@@ -18,7 +18,7 @@
                 @Html.ValidationSummary(true)
                 <div>
                     <span class="connectionFormLabel">Database Type</span>
-                    @Html.DropDownList("DatabaseType", new SelectList(""), new { data_bind = "options: databaseTypes, selectedOptions: databaseTypeSelectedItem" })
+                    @Html.DropDownList("DatabaseType", new SelectList(string.Empty), new { data_bind = "options: databaseTypes, selectedOptions: databaseTypeSelectedItem" })
                     
                     @Html.ValidationMessageFor(model => model.DatabaseType)
                 </div>

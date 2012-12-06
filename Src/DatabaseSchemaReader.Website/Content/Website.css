@@ -74,12 +74,13 @@ span.reference a:hover{
     background:url(../Content/Images/scrolling/black.gif) repeat-y top right;
 }
 
-.section ul{
+.section ul {
     left: 30px;
     list-style: none outside none;
     position: relative;
-    top: -30px;
+    top: -63px;
 }
+
 .black ul li{
     float:left;
     padding:5px;
