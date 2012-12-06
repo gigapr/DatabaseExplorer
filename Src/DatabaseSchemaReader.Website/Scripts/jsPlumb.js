@@ -72,13 +72,13 @@ $(function () {
             if (element.indexOf("tableNameContainer_") < 0) {
                 return false;
             }
-            var tableName = element.replace("tableNameContainer_", "");
+            var tableName = element.replace("tableNameContainer_", "").replace(/_/g, " ");
             $.ajax({
                 url: '/DatabaseExplorer/DisplayTable',
                 type: 'html',
                 data: { tableName: tableName },
                 success: function (result) {
-                    RemoveFromTableList(element);
+                    removeFromTableList(element);
                     $("#tablesContainer").append(result);
                     AddConnections();
                 },
@@ -97,7 +97,7 @@ function AddConnections() {
         type: 'html',
         success: function (result) {
             for (var i = 0; i < result.length; i++) {
-                AddConnection(result[i].ForeignKeyTableName, result[i].PrimaryKeyTableName);
+                AddConnection(result[i].ForeignKeyTableName.replace(/\s/g, "_"), result[i].PrimaryKeyTableName.replace(/\s/g, "_"));
             }
         },
         error: function (e) {
@@ -107,18 +107,21 @@ function AddConnections() {
     return false;
 }
 
-function RemoveFromTableList(element) {
+function removeFromTableList(element) {
     $("#" + element).remove();
 }
 
-function RestoreToTableList(tableName) {
+function restoreToTableList(tableName) {
+    var tableNameWithSpaces = tableName.replace("tableNameContainer_", "").replace(/_/g, " ");    
+    var tableNameWithUnderscore = "tableNameContainer_" + tableName;
+    
     $('#tableListContainer').append(
-            "<div id=tableNameContainer_" + tableName + " class='tableNameContainer'>" +
-                    tableName +
+            "<div id='" + tableNameWithUnderscore + "' class='tableNameContainer'>" +
+                    tableNameWithSpaces +
                     "<br/>" +
             "</div>"
         );
     $(".tableNameContainer").draggable({ revert: 'invalid' });
-    jsPlumb.detachAllConnections(tableName);
+    jsPlumb.detachAllConnections(tableName.replace(/\s/g, "_"));
     $("#" + tableName).remove();
 }

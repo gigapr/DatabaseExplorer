@@ -27,7 +27,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\DatabaseSchemaReader.WebHost.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -81,9 +82,12 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Attributes\DescriptionAttribute.cs" />
+    <Compile Include="Attributes\ParameterDescriptionAttribute.cs" />
     <Compile Include="Attributes\SchemaExplorerExceptionHandlerAttribute.cs" />
     <Compile Include="Controllers\DatabaseSchemaExplorerController.cs" />
     <Compile Include="Controllers\ApiController.cs" />
+    <Compile Include="Providers\ApiDocumentationProvider.cs" />
     <Compile Include="Providers\XmlCommentDocumentationProvider.cs" />
     <Compile Include="Exceptions\DatabaseTypeException.cs" />
     <Compile Include="Exceptions\Interfaces\IDatabaseTypeException.cs" />

@@ -18,7 +18,7 @@ namespace DatabaseSchemaReader.Website.Controllers
         {
             _accountService.SignIn(signIn);
 
-            return View("DatabaseExplorer");
+            return RedirectToAction("Index", "DatabaseExplorer");
         }
 
         [HttpPost]

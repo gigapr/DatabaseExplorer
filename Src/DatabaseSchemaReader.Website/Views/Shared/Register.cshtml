@@ -12,26 +12,26 @@
                 @Html.ValidationSummary(true)
                 <div>
                     <span class="connectionFormLabel">Email</span>
-                    @Html.EditorFor(model => model.Email)
+                    @Html.TextBoxFor(model => model.Email, new { id = "RegisterEmail" })
                     <br />
-                    @Html.ValidationMessageFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email, null, new { id = "RegisterEmailErrorMessage" })
                 </div>
                 <br />
                 <div>
                     <span class="connectionFormLabel">Password</span>
-                    @Html.EditorFor(model => model.Password)
+                    @Html.TextBoxFor(model => model.Password, new { id = "RegisterPassword" })
                     <br />
                     @Html.ValidationMessageFor(model => model.Password)
                 </div>
                 <br />
                 <div>
                     <span class="connectionFormLabel">Confirm Password</span>
-                    @Html.EditorFor(model => model.ConfirmPassword)
+                    @Html.TextBoxFor(model => model.ConfirmPassword, new { id = "RegisterConfirmationPassword" })
                     <br />
                     @Html.ValidationMessageFor(model => model.ConfirmPassword)
                 </div>
                 <div>
-                    <input type="submit" class="floatR" value="Register" />
+                    <input type="submit" id="ButtonRegister" class="floatR" value="Register" />
                 </div>
             </fieldset>
         }

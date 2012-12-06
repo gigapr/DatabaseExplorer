@@ -1,5 +1,4 @@
 ﻿@model List<string>
-
 @if (Model != null && Model.Count > 0)
 {
     <a id="tableListPanelTrigger" class="trigger" href="#">Tables</a>
@@ -7,7 +6,7 @@
         <div id="tableListContainer">
             @foreach (var table in Model)
             {
-                <div id="@string.Format("tableNameContainer_{0}", table)" class="tableNameContainer">
+                <div id="@string.Format("tableNameContainer_{0}", table.Replace(" ", "_"))" class="tableNameContainer">
                     @table
                     <br />
                 </div>

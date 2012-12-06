@@ -1,11 +1,16 @@
 ﻿@section css{
+    <script type="text/javascript" language="javascript">
+        require(["helper/util"], function (util) {
+            //This function is called when scripts/helper/util.js is loaded.
+            //If util.js calls define(), then this function is not fired until
+            //util's dependencies have loaded, and the util argument will hold
+            //the module value for "helper/util".
+        });
+    </script>
     <link href="../../Content/Website.css" rel="stylesheet" type="text/css" />
 }
-
 <div class="section black" id="section1">
-
     @Html.Partial("Menu", "Home")
-    
     <h2>Home</h2>
     <p class="description">
         Databse Explorer is all you need to access your databases.
@@ -14,7 +19,6 @@
         <a href="#section4" id="signInTrigger" class="blue">sign in</a> 
         to get started!!
      </p>
-    
     <div id="animateYellowExplorer"></div>
     <div id="animateRedExplorer"></div>
     <div id="animateGrayExplorer"></div>
@@ -24,7 +28,6 @@
         </p>
         <img src="../../Content/Images/explorer.png" alt="Explorer - Database Explorer" id="imgExplorer" />
     </div>
-    
     <div id="animateRedQueryBuilder"></div>
     <div id="animateGrayQueryBuilder"></div>
     <div id="animateYellowQueryBuilder"></div>
@@ -34,6 +37,5 @@
         </p>
         <img src="../../Content/Images/webApi.png" alt="Web Api- Database Explorer" id="imgWebApi" />
     </div>
-
 </div>
 

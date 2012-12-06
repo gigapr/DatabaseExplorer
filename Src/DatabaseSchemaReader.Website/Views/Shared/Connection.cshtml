@@ -1,5 +1,14 @@
 ﻿@model DatabaseSchemaReader.Website.Model.DatabaseConnection
-           
+<script>
+    $(document).ready(function () {
+        var databaseTypes = @Html.Raw(Json.Encode(ViewData["DatabaseTypes"])); 
+        var connectionViewModel = new ConnectionViewModel(databaseTypes);
+        ko.applyBindings(connectionViewModel);
+    });
+</script>
+<script type="text/javascript">
+    
+</script>
 <a id="connectionPanelTrigger" class="trigger" href="#">Connection</a>
 <div id="connectionPanel" class="panel">
     <div id="connectionForm">
@@ -9,35 +18,35 @@
                 @Html.ValidationSummary(true)
                 <div>
                     <span class="connectionFormLabel">Database Type</span>
-                    @Html.DropDownList("DatabaseType", ViewData["DatabaseType"] as SelectList, "- Select -")
+                    @Html.DropDownList("DatabaseType", new SelectList(""), new { data_bind = "options: databaseTypes, selectedOptions: databaseTypeSelectedItem" })
+                    
                     @Html.ValidationMessageFor(model => model.DatabaseType)
                 </div>
-                
                 <div>
                     <span class="connectionFormLabel">Provider</span>
                     @Html.EditorFor(model => model.Provider)
                     @Html.ValidationMessageFor(model => model.Provider)
                 </div>
-
                 <div>
                     <span class="connectionFormLabel">Data Source</span>
                     @Html.EditorFor(model => model.DataSource)
                     @Html.ValidationMessageFor(model => model.DataSource)
                 </div>
-            
-                <div>
+                <div data-bind="visible: hideNotAccessControls">
                     <span class="connectionFormLabel">Database Name</span>
                     @Html.EditorFor(model => model.DatabaseName)
                     @Html.ValidationMessageFor(model => model.DatabaseName)
                 </div>
-            
                 <div>
+                    <span >Integrated Security</span>
+                    @Html.CheckBoxFor(model => model.IntegratedSecurity, new { data_bind = "checked: integratedSecurityTicked" })
+                </div>
+                <div data-bind="visible: hideCredentialControls">
                     <span class="connectionFormLabel">Username</span>
                     @Html.EditorFor(model => model.Username)
                     @Html.ValidationMessageFor(model => model.Username)
                 </div>
-            
-                <div>
+                <div data-bind="visible: hideCredentialControls">
                     <span class="connectionFormLabel">Password</span>
                     @Html.EditorFor(model => model.Password)
                     @Html.ValidationMessageFor(model => model.Password)
@@ -54,3 +63,4 @@
     </div>
     <div style="clear: both;"></div>
 </div>
+

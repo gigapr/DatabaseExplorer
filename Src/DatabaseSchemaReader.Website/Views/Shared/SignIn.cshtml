@@ -1,12 +1,10 @@
 ﻿@model DatabaseSchemaReader.Website.ViewModels.SignIn
-
 <script type="text/javascript" language="javascript">
     function Test(message) {
         var jsonData = message.get_response().get_object();
         alert(jsonData);
     }
 </script>
-
 <div class="section black" id="section4">
     @Html.Partial("Menu", "Sign In")
     <h2>Sign In</h2>
@@ -34,7 +32,7 @@
             </div>
                             
             <div>
-                <input type="submit" class="floatR" value="Sign In" />
+                <input id="ButtonSignIn" type="submit" class="floatR" value="Sign In" />
             </div>
         </fieldset>
         }

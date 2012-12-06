@@ -1,9 +1,9 @@
 ﻿@model DatabaseSchemaReader.Contract.BusinessObjects.Table
-<div class="table component" id="@Model.Name">
+<div class="table component" id="@Model.Name.Replace(" ", "_")">
     <b class="tableName">@Model.Name</b>
     <br />
-    <input type='button' class='btnRemove' onclick='RestoreToTableList("@Model.Name");' title="Remove table @Model.Name"/>
-    
+    <input type='button' class='btnRemove' onclick='restoreToTableList("@Model.Name.Replace(" ", "_")");' title="Remove table @Model.Name"/>
+    @Model.Name
     @foreach (var column in Model.Columns)
     {
         @column.Name <b>@(column.InPrimaryKey ? "PK" : string.Empty)</b>

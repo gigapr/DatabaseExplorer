@@ -50,6 +50,7 @@
     <Compile Include="Strategies\AccessConnectionstringBuilderStrategyTest.cs" />
     <Compile Include="Strategies\OracleConnectionstringBuilderStrategyTest.cs" />
     <Compile Include="Strategies\SqlServerConnectionstringBuilderStrategyTests.cs" />
+    <Compile Include="Validators\AccessConnectionstringArgumentsValidatorTests.cs" />
     <Compile Include="Validators\SqlServerConnectionstringArgumentsValidatorTests.cs" />
   </ItemGroup>
   <ItemGroup>

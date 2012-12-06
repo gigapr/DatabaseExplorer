@@ -56,9 +56,10 @@ namespace DatabaseSchemaReader.Website.Test.Controllers
                 session.Store(makeUser);
             }
 
-            var viewResult = _accountController.SignIn(signIn);
+            var actionResult = (RedirectToRouteResult)_accountController.SignIn(signIn);
 
-            Assert.AreEqual("DatabaseExplorer", ((ViewResult)viewResult).ViewName);
+            Assert.AreEqual("Index", actionResult.RouteValues["action"]);
+            Assert.AreEqual("DatabaseExplorer", actionResult.RouteValues["controller"]);
         }        
     }
 }

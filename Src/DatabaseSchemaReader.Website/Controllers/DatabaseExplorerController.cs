@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Web.Mvc;
 using DatabaseSchemaReader.ConnectionstringBuilder.Interfaces;
 using DatabaseSchemaReader.Website.Factories.Interfaces;
@@ -34,7 +33,7 @@ namespace DatabaseSchemaReader.Website.Controllers
         {
             var databaseTypes = GetDatabaseTypes();
 
-            ViewData["DatabaseType"] = new SelectList(databaseTypes, "key", "value");
+            ViewData["DatabaseTypes"] = Json(databaseTypes);
 
             return View("Index");
         }
@@ -65,11 +64,6 @@ namespace DatabaseSchemaReader.Website.Controllers
 
                 Connectionstring = _connectionstringBuilder.BuildConnectionString(connectionstringArguments);
 
-                if(databaseConnection.DatabaseType == "Access")
-                {
-                    Connectionstring = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Git\DatabaseExplorer\Tests\DatabaseSchemaReader.Integration.Tests\Resources\Marketing Projects.accdb;";
-                }
-
                 var tables = _schemaReader.GetTablesName(Connectionstring);
               
                 return PartialView("TablesList", tables);
@@ -84,11 +78,7 @@ namespace DatabaseSchemaReader.Website.Controllers
 
         private static IEnumerable GetDatabaseTypes()
         {
-            return new Dictionary<string, string>
-            {
-                { "Access", "Access"},
-                { "SqlServer", "Sql Server"},
-            };
+            return new[] { "- Select -", "Access", "SqlServer" };
         }
     }
 }

@@ -28,9 +28,7 @@ namespace DatabaseSchemaReader.WebHost
         {
             var config = GlobalConfiguration.Configuration;
 
-            var documentationPath = string.Format(@"{0}\DatabaseSchemaReader.WebHost.xml", Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase));
-
-            config.Services.Replace(typeof (IDocumentationProvider), new XmlCommentDocumentationProvider(documentationPath));
+            config.Services.Replace(typeof (IDocumentationProvider), new ApiDocumentationProvider());
         }
 
         public static void RegisterRoutes(RouteCollection routes)

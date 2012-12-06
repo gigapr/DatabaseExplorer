@@ -1,0 +1,10 @@
+<Modules>
+  <Module PersistentId="0003F3DD-368A-40EA-BF20-5B6B79F6B67D" ModuleId="DatabaseSchemaReader.WebHost.Integration.Test" />
+  <Module PersistentId="0DA1865D-838D-463D-817C-E6D39DAA3675" ModuleId="DatabaseSchemaReader.ConnectionstringBuilder" />
+  <Module PersistentId="B622F841-B254-4195-B360-91EA8C85ACD1" ModuleId="DatabaseSchemaReader.WebHost" />
+  <Module PersistentId="8EC40820-AAF7-4102-8F2D-1BD6261D9133" ModuleId="DatabaseSchemaReader" />
+  <Module PersistentId="38C03DE4-E9E4-46E5-9DB3-F0836D49A2AD" ModuleId="DatabaseSchemaReader.Service" />
+  <Module PersistentId="B812845E-1B46-44FF-9C21-1C15FD88F4C3" ModuleId="DatabaseSchemaReader.Contract" />
+  <Module PersistentId="64964E11-14A9-4EE5-BB44-1C2075FF60F9" ModuleId="DatabaseSchemaReader.Website" />
+  <Module PersistentId="F2197F69-7C0C-42D9-A9CA-53503D986824" ModuleId="DatabaseSchemaReader.Website.Acceptance.Tests" />
+</Modules>

@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmbeddableDocumentStoreHelper.cs" />
+    <Compile Include="HtmlElementsNames.cs" />
     <Compile Include="UserHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
